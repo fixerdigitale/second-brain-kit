@@ -135,5 +135,5 @@ un modo di parlare, non un'etichetta: non si scrive mai «principiante» o «esp
 ## Impronta di un'area (per la ripresa)
 
 Per ogni area salva in `stato.json` → `impronte_aree.<area>` una stringa corta con i numeri che
-hai usato (per esempio `"claude_md=1;righe=84;sezioni=5;mod=2026-11-20"`). Alla ripresa rifai solo
+hai usato (per esempio `"claude_md=1,righe=84,sezioni=5,mod=2026-11-20"`). Alla ripresa rifai solo
 lo sguardo veloce: se l'impronta di un'area è cambiata, rifai gli esami di quell'area e basta.

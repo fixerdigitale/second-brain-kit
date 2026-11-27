@@ -380,6 +380,10 @@ def _main(argv):
                 raise ErroreUso("imposta-molti vuole coppie chiave=valore: %r non ha «=»" % chiave[:40])
             if not chiave.strip(". "):
                 raise ErroreUso("chiave vuota in una coppia di imposta-molti")
+            vietati = [c for c in ";&|<>$\n" if c in testo]
+            if vietati:
+                raise ErroreUso("valore di %s con caratteri non ammessi (%s): per separare usa la virgola"
+                                " (nessuna chiave scritta)" % (chiave[:60], " ".join(repr(c) for c in vietati)))
             try:
                 v = valore(testo)
             except ValoreLungo as e:

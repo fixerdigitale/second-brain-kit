@@ -72,6 +72,8 @@ def test_imposta_molti_valore_con_uguale(lavoro, casa):
     ("senza-uguale", 2),
     ("=valore", 2),
     ("lingua=fr", 2),
+    ("impronta=claude_md=1;righe=84", 2),
+    ("nota=a|b", 2),
 ])
 def test_imposta_molti_tutto_o_niente(lavoro, casa, cattiva, codice):
     prima = leggi(lavoro)
