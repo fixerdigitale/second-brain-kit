@@ -349,7 +349,7 @@ Le voci sono divise per area, come le schede del catalogo. Le date sono quelle d
 ### Le slide per le call di formazione a due
 - **Cosa prometteva.** Una presentazione ordinata per spiegare un processo.
 - **Perché l'ho provato.** Preparando una call di formazione mi sono chiesto se servissero.
-- **Perché l'ho lasciato.** In una call a due lo scopo è che l'altro impari a fare da solo; con le slide parlo io. E io mi perdo quando devo guidare una conversazione: mi serve una traccia con le frasi già scritte.
+- **Perché l'ho lasciato.** In una call a due lo scopo è che l'altro impari a fare da solo; con le slide parlo io. Per guidare una conversazione preferisco una traccia con le frasi già scritte.
 - **Cosa uso invece.** Una pagina «una frase alla volta» con il tasto Avanti, domande scritte per esteso e frasi di riserva sempre visibili.
 - **Quando a te potrebbe servire.** Per una presentazione vera a più persone, le slide restano la scelta giusta.
 - **Quando.** Novembre 2026.
@@ -381,7 +381,7 @@ Le voci sono divise per area, come le schede del catalogo. Le date sono quelle d
 ### Strumenti e offerte con promesse gonfiate (GPU gratis, piani studente, prompt miracolosi, finte estensioni)
 - **Cosa prometteva.** Potenza di calcolo gratis, modelli premium gratis, risultati garantiti con un prompt.
 - **Perché l'ho provato.** Arrivano da reel e segnalazioni che salvo per valutarli.
-- **Perché l'ho lasciato.** Alla verifica erano gonfiati, falsi o porte d'ingresso per vendere altro. Un esempio: una presunta «estensione potente per Claude Code» era in realtà una chat per aggirare le regole dei modelli, usata per raccogliere follower.
+- **Perché l'ho lasciato.** Alla verifica erano gonfiati, falsi o porte d'ingresso per vendere altro. Un esempio: una presunta «estensione potente per Claude Code» era in realtà una chat per aggirare le regole dei modelli.
 - **Cosa uso invece.** Una lista di segnalibri da consultare (raccolte pubbliche di API, MCP e app), senza installare niente.
 - **Quando a te potrebbe servire.** Raramente. Se uno ti incuriosisce, guarderei chi lo pubblica e cosa vende dopo, e leggerei il codice prima di fidarmi.
 - **Quando.** Ottobre e novembre 2026.

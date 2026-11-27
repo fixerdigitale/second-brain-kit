@@ -349,7 +349,7 @@ The entries are grouped by area, like the catalog cards. The dates are when I ma
 ### Slides for one-to-one training calls
 - **What it promised.** A tidy presentation to explain a process.
 - **Why I tried it.** While preparing a training call I wondered whether I needed them.
-- **Why I let it go.** In a one-to-one call the goal is for the other person to learn to do it on their own; with slides, I'm the one talking. And I lose my way when I have to lead a conversation: I need a script with the sentences already written.
+- **Why I let it go.** In a one-to-one call the goal is for the other person to learn to do it on their own; with slides, I'm the one talking. To lead a conversation I prefer a script with the sentences already written.
 - **What I use instead.** A "one sentence at a time" page with a Next button, questions written out in full and backup lines always visible.
 - **When it might suit you.** For a real presentation to several people, slides are still the right choice.
 - **When.** November 2026.
@@ -381,7 +381,7 @@ The entries are grouped by area, like the catalog cards. The dates are when I ma
 ### Tools and offers with inflated promises (free GPUs, student plans, miracle prompts, fake extensions)
 - **What it promised.** Free computing power, free premium models, guaranteed results with one prompt.
 - **Why I tried it.** They come from reels and tips I save to evaluate.
-- **Why I let it go.** When I checked, they were inflated, fake, or a way in to sell something else. One example: a supposed "powerful extension for Claude Code" was actually a chat for getting around the models' rules, used to gather followers.
+- **Why I let it go.** When I checked, they were inflated, fake, or a way in to sell something else. One example: a supposed "powerful extension for Claude Code" was actually a chat for getting around the models' rules.
 - **What I use instead.** A list of bookmarks to browse (public collections of APIs, MCP servers and apps), without installing anything.
 - **When it might suit you.** Rarely. If one makes you curious, I'd look at who publishes it and what they sell afterwards, and read the code before trusting it.
 - **When.** October and November 2026.

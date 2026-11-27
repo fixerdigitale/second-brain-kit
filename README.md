@@ -2,7 +2,7 @@
 
 # Second Brain Kit
 
-**My second brain with Claude Code: what I use, what I dropped, and an onboarding that looks at your setup before suggesting anything.**
+**Claude Code forgets everything between sessions. Here's what I kept, the 45 things I dropped, and a guided onboarding that looks at your setup first and helps you improve it.**
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-informational)](LICENSE)
 [![Version](https://img.shields.io/badge/version-2.0.0-informational)](CHANGELOG.md)
@@ -17,8 +17,11 @@
 
 ## Why I'm sharing this
 
+I'm Daniel Martines. I run Fixer Digitale, a small digital studio in Italy, and I'm not a developer by training.
 I work with Claude Code every day, together with a small group of agents. I built myself a setup so I don't have to re-explain everything at every session, and a few people asked me how it works.
 This is my way of doing it, limits included: it isn't a method and it isn't the only right one. Take what helps you and leave the rest.
+
+Think of it as a piece of my second brain you can borrow. The onboarding guides you one step at a time, at any level: it looks at what you already have, asks when it isn't sure, and suggests at most 3 improvements. You decide each one.
 
 ## What I dropped
 
@@ -124,6 +127,7 @@ Never paste passwords or keys into the chat, not even here.
 - Cards marked "server" describe how I do it: on a PC they need adapting, and some have no package.
 - The PC versions are adaptations of my originals: I've used them for much less time.
 - Claude Code changes often. Some commands or settings may already be different by the time you read this.
+- The block the kit offers to add to your `CLAUDE.md` is long (about 970 words), in Italian only, and assumes you work with several clients. It asks before adding it: read [`CLAUDE-blocco.md`](plugin/second-brain/modelli/CLAUDE-blocco.md) first and keep only the parts that fit you. Splitting it into modules is next on my list.
 - Everything was written in Italian first; the English version is a translation.
 - This isn't professional advice: on backups, permissions and other people's data, you decide, with your own judgment.
 

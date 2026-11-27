@@ -2,7 +2,7 @@
 
 # Second Brain Kit
 
-**Il mio second brain con Claude Code: cosa uso, cosa ho scartato, e un onboarding che studia il tuo sistema prima di proporti qualcosa.**
+**Claude Code si dimentica tutto fra una sessione e l'altra. Ecco cosa ho tenuto, le 45 cose che ho scartato e un onboarding guidato che prima guarda il tuo sistema e poi ti aiuta a migliorarlo.**
 
 [![Licenza: MIT](https://img.shields.io/badge/licenza-MIT-informational)](LICENSE)
 [![Versione](https://img.shields.io/badge/versione-2.0.0-informational)](CHANGELOG.md)
@@ -17,8 +17,11 @@
 
 ## Perché lo condivido
 
+Sono Daniel Martines. Ho Fixer Digitale, un piccolo studio digitale in Italia, e non sono uno sviluppatore di formazione.
 Lavoro ogni giorno con Claude Code e con un piccolo gruppo di agenti. Mi sono costruito un sistema per non rispiegare tutto a ogni sessione, e un po' di persone mi hanno chiesto come funziona.
 Questo è il mio modo, con i suoi limiti: non è un metodo e non è l'unico giusto. Prendi quello che ti serve e lascia il resto.
+
+Pensalo come un pezzo del mio second brain che puoi prendere in prestito. L'onboarding ti guida un passo alla volta, a qualsiasi livello: guarda cosa hai già, chiede quando non è sicuro e ti propone al massimo 3 miglioramenti. Ognuno lo decidi tu.
 
 ## Cosa ho scartato
 
@@ -124,6 +127,7 @@ Non incollare mai password o chiavi nella chat, nemmeno qui.
 - Le schede marcate «server» descrivono come lo faccio io: sul PC vanno adattate, e alcune non hanno un pacchetto.
 - Le versioni per PC sono adattamenti dei miei originali: le ho usate molto meno a lungo.
 - Claude Code cambia spesso. Qualche comando o impostazione potrebbe essere già diverso quando leggi.
+- Il blocco che il kit propone di aggiungere al tuo `CLAUDE.md` è lungo (circa 970 parole), solo in italiano, e dà per scontato che lavori con più clienti. Chiede prima di aggiungerlo: leggi prima [`CLAUDE-blocco.md`](plugin/second-brain/modelli/CLAUDE-blocco.md) e tieni solo le parti che ti servono. Dividerlo in moduli è il prossimo lavoro che ho in lista.
 - I testi sono nati in italiano; la versione inglese è una traduzione.
 - Non è consulenza: su backup, permessi e dati di altre persone decidi tu, con i tuoi criteri.
 
