@@ -1,0 +1,11 @@
+{
+  "backend": "claude",
+  "model": "claude-sonnet-5-5",
+  "auto_adopt": false,
+  "redact_secrets": true,
+  "max_tasks_per_night": 15,
+  "max_tokens_per_night": 150000,
+  "lookback_hours": 72,
+  "edit_budget": 4,
+  "preferences": "Le regole di CLAUDE.md e della memoria vincono sempre. Niente percorsi o nomi di un solo progetto o cliente. Niente segreti, nemmeno come esempio."
+}

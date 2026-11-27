@@ -1,0 +1,4 @@
+# Un percorso per riga (assoluto, oppure con ~ per la tua cartella utente).
+# Scegli file corti che dicono com'è ADESSO, non archivi lunghi: se ne legge l'inizio.
+# ~/<cartella-vault>/STATO.md
+# ~/<cartella-vault>/Progetti/in-corso.md

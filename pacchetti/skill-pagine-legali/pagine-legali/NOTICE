@@ -1,0 +1,56 @@
+pagine-legali
+Skill per scrivere le pagine legali dei siti italiani (privacy, cookie, condizioni di servizio,
+uso dell'AI, banner cookie). Adattamento italiano, ottobre 2026.
+
+Questa skill contiene materiale derivato da:
+
+  claude-skill-eu-web-compliance
+  https://github.com/gricyk/claude-skill-eu-web-compliance
+  Copyright 2026 Igor Gricyk
+  Licenza Apache 2.0 (testo completo nel file LICENSE)
+  Versione usata: commit 5034795d5bcc68b63549e729fff1ad9567889bf1 (19 settembre 2026),
+  clonata il 2 ottobre 2026.
+
+Il progetto originale non contiene un file NOTICE. Le note di copyright sono conservate nel file
+LICENSE e in testa a scripts/scan.py.
+
+COSA È STATO PRESO
+
+- Il metodo, riscritto in italiano in SKILL.md: prima si verificano il sito e i fatti, poi si
+  scrive; niente dati inventati (segnaposto visibili ed elenco dei fatti mancanti); nessuna
+  citazione non verificata (marcata "da verificare"); date da ricontrollare con fonte e data della
+  verifica; prova nel browser prima, dopo il rifiuto e dopo l'accettazione; bozze salvate fuori
+  dalle cartelle pubblicate; nessuna modifica al sito senza un piano approvato.
+- Le idee di alcuni controlli della lista (consenso libero e non pre-spuntato, rifiuto facile quanto
+  l'accettazione, niente cookie prima della scelta, contenuti incorporati, cookie wall).
+- La struttura della tabella dei cookie e delle informative, poi riscritte da zero per l'Italia.
+- scripts/scan.py, modificato (vedi sotto).
+
+COSA È STATO MODIFICATO
+
+scripts/scan.py (file modificato, con nota in testa):
+- istruzioni d'uso, aiuto della riga di comando, avvisi e riepilogo tradotti in italiano;
+- riconoscimento degli strumenti tipici delle landing italiane, con lo stato di caricamento (attivo,
+  bloccato fino al consenso, solo in <noscript>, solo link, destinatario dei dati dei moduli);
+- controlli italiani sulle pagine: P.IVA visibile, link a privacy e cookie policy, link per
+  riaprire le preferenze cookie, moduli senza link all'informativa, consensi privacy e marketing
+  nella stessa casella;
+- richieste dentro <noscript> separate da quelle caricate subito;
+- parole chiave italiane e nuovi host di terze parti.
+Le chiavi JSON dell'originale sono invariate. Sulle pagine di prova e sugli esempi del progetto
+originale le chiavi originali danno lo stesso risultato della versione di partenza (verificato il
+2 ottobre 2026).
+
+COSA È NUOVO (non deriva dal progetto originale)
+
+- Il quadro normativo italiano in riferimenti.md (Codice privacy, linee guida cookie del Garante,
+  Codice del consumo, codice civile, D.lgs. 231/2002, DPR 633/1972 e testo unico IVA, D.lgs. 70/2003,
+  legge 132/2025), verificato su fonti primarie il 2 ottobre 2026.
+- checklist.md, con i comandi da lanciare.
+- I modelli in modelli/ (scheda dei fatti, informativa privacy, cookie policy, condizioni di
+  servizio B2B e B2C, informativa sull'uso dell'AI, testi per vanilla-cookieconsent 3).
+- scripts/consenso.mjs (controllo nel browser con Playwright).
+
+Non sono stati copiati: la checklist su accessibilità e DSA, i modelli DPIA, registro dei
+trattamenti e dichiarazione di accessibilità, gli esempi, i test e le valutazioni automatiche del
+progetto originale.

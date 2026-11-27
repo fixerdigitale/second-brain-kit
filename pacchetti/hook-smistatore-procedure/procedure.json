@@ -1,0 +1,17 @@
+[
+  {
+    "nome": "Landing page",
+    "parole": ["landing", "pagina di vendita"],
+    "file": "<cartella-vault>/procedure/landing.md"
+  },
+  {
+    "nome": "Report per il cliente",
+    "parole": ["report", "kpi", "numeri del mese", "resoconto"],
+    "file": "<cartella-vault>/procedure/report-cliente.md"
+  },
+  {
+    "nome": "Proposta commerciale",
+    "parole": ["proposta", "preventivo", "offerta"],
+    "file": "<cartella-vault>/procedure/proposta.md"
+  }
+]

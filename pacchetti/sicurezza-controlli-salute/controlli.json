@@ -1,0 +1,24 @@
+{
+  "file_stato": "~/.controlli-salute/stato.json",
+  "controlli": [
+    {
+      "nome": "Il mio sito",
+      "tipo": "url",
+      "url": "https://<tuo-dominio>/",
+      "file_collegati": true
+    },
+    {
+      "nome": "Backup del vault di stanotte",
+      "tipo": "file_recente",
+      "percorso": "<cartella-cloud>/Backup vault/ultimo-backup.txt",
+      "ore_max": 30,
+      "contiene": "ESITO: OK"
+    },
+    {
+      "nome": "Il vault è sotto git e leggibile",
+      "tipo": "comando",
+      "comando": ["git", "-C", "<cartella-vault>", "status", "--porcelain"],
+      "timeout": 60
+    }
+  ]
+}

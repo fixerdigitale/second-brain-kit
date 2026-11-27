@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITOLO}}</title>
+<style>
+  :root {
+    --sfondo: #f7f6f3; --carta: #ffffff; --testo: #1d1d1b; --tenue: #6b6a66;
+    --linea: #e4e2dc; --accento: #2f5d50; --nota: #f1efe8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --sfondo: #151514; --carta: #1d1d1b; --testo: #ecebe7; --tenue: #a3a29d;
+      --linea: #33322f; --accento: #8cc4b3; --nota: #26251f;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--sfondo); color: var(--testo);
+         font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  .pagina { max-width: 760px; margin: 0 auto; padding: 48px 16px 80px; }
+  header { border-bottom: 1px solid var(--linea); padding-bottom: 24px; margin-bottom: 24px; }
+  h1 { font-size: 1.9rem; line-height: 1.2; margin: 0 0 8px; }
+  .sottotitolo { color: var(--tenue); margin: 0; }
+  .data { color: var(--tenue); font-size: .85rem; margin-top: 12px; }
+  nav { background: var(--carta); border: 1px solid var(--linea); border-radius: 10px;
+        padding: 12px 16px; margin-bottom: 32px; }
+  nav a { display: block; color: var(--accento); text-decoration: none; padding: 3px 0; }
+  section { margin-bottom: 40px; }
+  h2 { font-size: 1.3rem; margin: 0 0 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: .95rem; display: block; overflow-x: auto; }
+  th, td { border-bottom: 1px solid var(--linea); padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { color: var(--tenue); font-weight: 600; }
+  .nota { background: var(--nota); border-left: 3px solid var(--accento); padding: 12px 16px; border-radius: 6px; }
+  a { color: var(--accento); }
+  code { font-size: .9em; }
+</style>
+</head>
+<body>
+<div class="pagina">
+  <header>
+    <h1>{{TITOLO}}</h1>
+    <p class="sottotitolo">{{SOTTOTITOLO}}</p>
+    <p class="data">{{DATA}}</p>
+  </header>
+  <nav aria-label="Indice">{{INDICE}}</nav>
+  <main>{{CONTENUTO}}</main>
+</div>
+</body>
+</html>

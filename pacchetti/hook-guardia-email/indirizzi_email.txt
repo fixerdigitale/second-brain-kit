@@ -1,0 +1,2 @@
+# Un indirizzo per riga. Le righe che cominciano con # non contano.
+# tuo-nome@tuo-dominio.it

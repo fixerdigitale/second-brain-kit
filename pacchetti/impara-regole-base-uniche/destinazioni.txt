@@ -1,0 +1,5 @@
+# Un file per riga. ~ e $HOME vanno bene. Le righe con # si saltano.
+# Esempi: i tuoi sotto-agenti di Claude Code, le regole di un progetto per Codex.
+~/.claude/agents/esecutore.md
+~/.claude/agents/costruttore.md
+# <tuo-progetto>/AGENTS.md

@@ -1,0 +1,18 @@
+{
+  "name": "second-brain",
+  "version": "2.0.0",
+  "description": "Second brain per Claude Code, per qualsiasi livello: /second-brain:onboarding porta a un primo risultato vero in circa 15 minuti, poi una mappa di quello che hai e al massimo 3 passi da un catalogo di opzioni, con la rimisura dopo 14 giorni. Memoria in file tuoi, correzioni che restano, sola lettura finché non dici sì. Italiano e inglese.",
+  "author": {
+    "name": "Daniel"
+  },
+  "keywords": [
+    "memoria",
+    "memory",
+    "second-brain",
+    "onboarding",
+    "italiano",
+    "english",
+    "vault",
+    "sicurezza"
+  ]
+}

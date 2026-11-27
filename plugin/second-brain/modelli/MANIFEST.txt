@@ -1,0 +1,21 @@
+# File seme del pacchetto Second Brain: cosa copia /second-brain:installa nella cartella di lavoro.
+# Una riga per file: <regola> <percorso relativo alla cartella di lavoro>
+#   aggiorna = file di riferimento: si crea se manca; negli aggiornamenti si propone di sostituirlo
+#              solo se la persona non l'ha cambiato (altrimenti si mostrano le differenze e si chiede).
+#   crea     = file che diventa della persona: si crea solo se manca, gli aggiornamenti non lo toccano mai.
+# Il CLAUDE.md non è qui: lo gestiscono a parte CLAUDE-inizio.md (solo se manca) e CLAUDE-blocco.md (il blocco fra i marcatori).
+aggiorna memoria/COME-FUNZIONA.md
+aggiorna memoria/Clienti/_modello.md
+aggiorna memoria/Progetti/_modello.md
+aggiorna memoria/Risorse/_modello.md
+aggiorna memoria/Decisioni/_modello.md
+aggiorna memoria/Fatti/_modello.md
+aggiorna memoria/Fonti/_modello.md
+aggiorna memoria/Correzioni/_modello.md
+aggiorna soluzioni/_modello.md
+crea memoria/indice.md
+crea memoria/inbox.md
+crea memoria/Correzioni/REGOLE-ORO.md
+crea pipeline/PIPELINE.md
+crea pipeline/STORICO.md
+crea _da-cancellare/LEGGIMI.md

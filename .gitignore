@@ -1,0 +1,36 @@
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node
+node_modules/
+
+# Segreti e configurazioni locali: non vanno mai nella repo
+.env
+.env.*
+*.key
+*.pem
+secrets*
+.claude/settings.local.json
+
+# Quello che l'onboarding produce sul tuo computer
+second-brain/output/
+/_da-cancellare/
+
+# Archivi
+*.zip
+
+# Note di lavoro sulle prove: restano sul PC
+docs/NOTE-PROVE.md

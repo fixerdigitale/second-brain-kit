@@ -1,0 +1,17 @@
+{
+  "autoCompactWindow": 480000,
+  "idleCompaction": true,
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$HOME/.claude/hooks/avviso_contesto.py\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

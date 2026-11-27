@@ -1,0 +1,20 @@
+{
+  "name": "second-brain-kit",
+  "owner": {
+    "name": "Daniel Martines / Fixer Digitale"
+  },
+  "metadata": {
+    "description": "Il second brain di Daniel Martines con Claude Code: un onboarding che studia il tuo sistema prima di proporti qualcosa, più un catalogo di opzioni e di cose scartate.",
+    "version": "2.0.0"
+  },
+  "plugins": [
+    {
+      "name": "second-brain",
+      "source": "./plugin/second-brain",
+      "description": "Onboarding che studia il tuo sistema in sola lettura, ti dà un primo risultato, una mappa e un piano di al massimo 3 passi presi dal catalogo.",
+      "version": "2.0.0",
+      "license": "MIT",
+      "keywords": ["second-brain", "memoria", "onboarding", "italiano"]
+    }
+  ]
+}

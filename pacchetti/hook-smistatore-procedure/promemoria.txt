@@ -1,0 +1,1 @@
+PROMEMORIA DI REGIA: questo messaggio sembra un lavoro. Prima di cominciare segui la skill smistamento (chi lo fa, in base alla taglia) e, se deleghi, la skill delega-con-controllo (brief con «Fatto quando», controllo prima di dire fatto). Dillo all'utente in una riga.

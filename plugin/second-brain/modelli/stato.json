@@ -1,0 +1,61 @@
+{
+  "versione_kit": "2.0.0",
+  "lingua": "it",
+  "fase": 0,
+  "fasi_fatte": [],
+  "iniziato_il": "",
+  "aggiornato_il": "",
+  "ritmo": "normale",
+  "cartella_di_lavoro": "",
+  "cartella_sincronizzata_o_online": null,
+  "pc_acceso_di_notte": null,
+  "consensi": {
+    "patto_accettato": false,
+    "cartelle_nomi": [],
+    "cartelle_contenuto": [],
+    "sessioni_passate": false,
+    "regole_deny": null
+  },
+  "tono": null,
+  "tono_incerto": true,
+  "aree": {
+    "contesto": {"voto": null, "stato": null, "prova": ""},
+    "memoria": {"voto": null, "stato": null, "prova": ""},
+    "correzioni": {"voto": null, "stato": null, "prova": ""},
+    "metodo": {"voto": null, "stato": null, "prova": ""},
+    "mestiere": {"voto": null, "stato": null, "prova": ""},
+    "ricerca": {"voto": null, "stato": null, "prova": ""},
+    "automazioni_canali": {"voto": null, "stato": null, "prova": ""},
+    "sicurezza_ripristino": {"voto": null, "stato": null, "prova": ""}
+  },
+  "impronte_aree": {},
+  "lavoro_che_pesa": "",
+  "primo_risultato": {
+    "tipo": "",
+    "descrizione": "",
+    "file": "",
+    "stima_prima_min": null,
+    "stima_e_della_persona": true,
+    "inizio": "",
+    "fine": "",
+    "minuti_con_claude": null
+  },
+  "pezzo_ripetibile": "",
+  "misure": {
+    "data": "",
+    "giorni_ultimo_backup_verificato": null,
+    "file_importanti_senza_copia": null,
+    "chiavi_in_chiaro": null,
+    "lavori_ricorrenti_con_procedura": null,
+    "regole_dalle_correzioni": null,
+    "minuti_primo_risultato": null,
+    "minuti_dall_inizio_al_primo_risultato": null,
+    "stima_minuti_persi_a_rispiegare": null
+  },
+  "mappa": {"data": "", "file": ""},
+  "piano": {"data": "", "file": "", "rimisura_dal": "", "passi": []},
+  "missioni": [],
+  "saltati": [],
+  "rimisure": [],
+  "rimisura_proposta_il": ""
+}

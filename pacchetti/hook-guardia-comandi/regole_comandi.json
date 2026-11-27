@@ -1,0 +1,21 @@
+[
+  {
+    "strumento": "Bash",
+    "se_contiene": "git\\s+push\\b.*(--force\\b|\\s-f\\b)",
+    "tranne_se": "--force-with-lease",
+    "azione": "deny",
+    "messaggio": "Niente push forzati sul vault o sui progetti. Se serve davvero, usa --force-with-lease e spiegami perché."
+  },
+  {
+    "strumento": "Bash",
+    "se_contiene": "\\brm\\s+-[a-z]*r[a-z]*f|\\brm\\s+-[a-z]*f[a-z]*r",
+    "azione": "ask",
+    "messaggio": "Cancellazione ricorsiva: prima di confermare controlla il percorso."
+  },
+  {
+    "strumento": "Write|Edit",
+    "se_contiene": "\"file_path\":\\s*\"[^\"]*\\.env\"",
+    "azione": "ask",
+    "messaggio": "Sta per scrivere in un file .env (chiavi): confermi?"
+  }
+]
