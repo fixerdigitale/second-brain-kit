@@ -1,16 +1,16 @@
 [
   {
     "strumento": "Bash",
-    "se_contiene": "git\\s+push\\b.*(--force\\b|\\s-f\\b)",
-    "tranne_se": "--force-with-lease",
+    "se_contiene": "\\bgit\\b.*\\spush\\b(?=.*(\\s--force(?![-\\w])|\\s-[a-z]*f[a-z]*\\b|\\s\\+[^\\s+]))",
+    "tranne_se": "^(?!.*\\s\\+[^\\s+])(?!.*\\s--force(?![-\\w]))(?!.*\\s-[a-z]*f[a-z]*\\b).*--force-with-lease",
     "azione": "deny",
-    "messaggio": "Niente push forzati sul vault o sui progetti. Se serve davvero, usa --force-with-lease e spiegami perché."
+    "messaggio": "Niente push forzati sul vault o sui progetti (anche --force, -f e il + davanti al ramo, come in origin +main). Se serve davvero, usa --force-with-lease senza il + e spiegami perché."
   },
   {
     "strumento": "Bash",
-    "se_contiene": "\\brm\\s+-[a-z]*r[a-z]*f|\\brm\\s+-[a-z]*f[a-z]*r",
+    "se_contiene": "\\brm\\b(?=.*\\s(-[a-z]*r[a-z]*|--recursive)\\b)(?=.*\\s(-[a-z]*f[a-z]*|--force)\\b)",
     "azione": "ask",
-    "messaggio": "Cancellazione ricorsiva: prima di confermare controlla il percorso."
+    "messaggio": "Cancellazione ricorsiva forzata: prima di confermare controlla il percorso."
   },
   {
     "strumento": "Write|Edit",

@@ -21,6 +21,6 @@ status: "PC version of mine"
 
 **When you need it.** If at the end of the week you have plan left over and clear preparatory jobs you can describe in a brief.
 
-**When you DON'T need it.** If you already use up the whole plan during the day, or if your jobs always need your decisions halfway. On a PC it only runs if the PC stays on and doesn't go to sleep. And the package script doesn't read plan usage: it only stops at a fixed time (7 am), so keeping the queue short is up to you.
+**When you DON'T need it.** If you already use up the whole plan during the day, or if your jobs always need your decisions halfway. On a PC it only runs if the PC stays on and doesn't go to sleep. And the package script doesn't read plan usage: it only stops at a fixed time (7 am), so keeping the queue short is up to you. The "€0 extra" only holds with the subscription: check with /status that you're using it; with `ANTHROPIC_API_KEY` in the environment the script doesn't start without `--anche-a-consumo`.
 
 **How to get it.** Copy `coda.py`, set `VAULT` to the vault path, write the jobs in `CODA.md` (a "## title" and the brief below it) and schedule it at night with Task Scheduler (Windows, with "Wake the computer to run this task") or cron (Mac). The shift that turns itself on when you're idle remains a server idea. Step-by-step instructions: [package guide](../../pacchetti/canali-lavoro-notte/LEGGIMI.md).

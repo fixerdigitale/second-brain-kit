@@ -1,11 +1,13 @@
 ---
 name: primo-risultato
 description: >
-  Fase 2 dell'onboarding del second brain: in 10-15 minuti un primo risultato concreto, adatto a
-  chi c'è davanti. Per chi parte da zero è un lavoro vero fatto insieme; per chi ha correzioni sono
-  3 regole d'oro; per chi ha già un sistema è un difetto trovato e chiuso; per chi ha un vault è una
-  pulizia mirata. Con la misura prima/dopo. La apre la skill onboarding; usala da sola quando la
-  persona chiede «fammi vedere cosa sai fare sul mio lavoro» dentro un onboarding in corso.
+  Onboarding phase 2: a first concrete result in 10-15 minutes, fitted to the person (a real job
+  done together, 3 golden rules from corrections, a defect found and fixed, or a targeted vault
+  clean-up), with a before/after measure. Opened by the onboarding. — Fase 2 dell'onboarding: in
+  10-15 minuti un primo risultato concreto adatto a chi c'è davanti (un lavoro vero fatto insieme, 3
+  regole d'oro dalle correzioni, un difetto trovato e chiuso, o una pulizia mirata del vault), con
+  la misura prima/dopo. La apre l'onboarding.
+disable-model-invocation: true
 ---
 
 # Primo risultato

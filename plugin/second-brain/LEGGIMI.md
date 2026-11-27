@@ -31,9 +31,10 @@ Il primo giorno sono 30-45 minuti fino al piano, di solito in 2-3 sedute. Si rip
 ## Come si installa
 
 1. In Claude Code aggiungi il marketplace della repo del kit:
-   `/plugin marketplace add <proprietario>/second-brain-kit`
+   `/plugin marketplace add fixerdigitale/second-brain-kit`
 2. Installa il plugin: `/plugin install second-brain@second-brain-kit`, e scegli «per te».
-3. Riavvia la sessione, apri la tua cartella di lavoro e scrivi `/second-brain:onboarding`.
+3. Chiudi Claude Code e riaprilo nella tua cartella di lavoro (non in quella del kit), poi scrivi
+   `/second-brain:onboarding`.
 
 ## Cosa guarda e cosa non fa mai
 
@@ -52,9 +53,13 @@ Il primo giorno sono 30-45 minuti fino al piano, di solito in 2-3 sedute. Si rip
   sincronizzata (OneDrive, iCloud, Dropbox, Google Drive) o ha una copia online con git, finiscono
   anche lì, e l'onboarding te lo dice prima (nella mappa, dei segreti scrive solo il numero).
 - **Cosa parte da solo:** un hook all'avvio di Claude (`hooks/hooks.json`) che, dal giorno 14 dopo
-  il piano, propone la rimisura una volta sola; finché l'onboarding non c'è, esce subito. Le skill
-  `buone-maniere` e `salva-in-memoria` si attivano quando servono (la seconda chiede il sì prima di
-  scrivere); `contro-parere` e `smistamento` si accendono solo a mano.
+  il piano, propone la rimisura una volta sola; finché l'onboarding non c'è, esce subito. Delle skill,
+  solo `onboarding` e `aiuto` si attivano da sole quando servono; tutte le altre hanno
+  `disable-model-invocation: true`: non stanno nel contesto di ogni sessione, le apre l'onboarding
+  leggendone il file oppure le chiami tu con `/second-brain:<nome>`.
+- **Dove passa quello che legge:** quello che l'onboarding legge, compresi i nomi delle cartelle,
+  passa da Claude come ogni conversazione: vale la privacy del tuo account Anthropic. Il kit non
+  aggiunge nessun altro invio.
 
 ## Cosa c'è dentro
 
@@ -146,9 +151,9 @@ re-explain, don't redo, delegate), the chosen steps one at a time, and a **re-me
 days. Claude answers in the language you write in (Italian or English). At any time: `skip`,
 `slower`, `faster`, `stop`.
 
-**Install.** `/plugin marketplace add <owner>/second-brain-kit`, then
-`/plugin install second-brain@second-brain-kit`, restart, open your work folder and type
-`/second-brain:onboarding`.
+**Install.** `/plugin marketplace add fixerdigitale/second-brain-kit`, then
+`/plugin install second-brain@second-brain-kit`, then close Claude Code, reopen it in your own work
+folder (not the kit's folder) and type `/second-brain:onboarding`.
 
 **What it looks at, what it never does.** File names in Documents, Desktop, Downloads and the Claude
 folder; content only of the Claude folder and the work folder you choose; past conversations only
@@ -156,8 +161,12 @@ with a separate consent, counts and topics only. The study is done by the `studi
 only has read tools: read-only is enforced, not promised. It never reads outside the authorised
 folders, never prints secrets (only `file:line:NAME`), never writes or deletes without a yes per item
 (dated copy first, nothing deleted: moved to `_da-cancellare/`), never pushes or shares, never
-installs outside code without a check, never sends data out. One automatic step only: a start-up hook
-that offers the re-measure once, from day 14. Scripts are Python 3, standard library only; without
+installs outside code without a check, never sends data out on its own. What it reads, folder names
+included, goes through Claude like any conversation: your Anthropic account's privacy applies; the kit
+adds no other sends. One automatic step only: a start-up hook that offers the re-measure once, from
+day 14. Of the skills, only `onboarding` and `aiuto` switch on by themselves; the others have
+`disable-model-invocation: true` and are opened by the onboarding or by you with
+`/second-brain:<name>`. Scripts are Python 3, standard library only; without
 Python the walk-through still works, with a few numbers marked "to be confirmed".
 
 **When you don't need it.** If you use Claude Code now and then for single tasks, a five-line

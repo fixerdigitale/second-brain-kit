@@ -1,12 +1,17 @@
 ---
 name: onboarding
 description: >
-  Regia dell'onboarding del second brain: un upgrade per qualsiasi livello, non un installatore.
-  Di solito fra il minuto 15 e il 25 un primo risultato vero, poi la MAPPA di quello che la persona ha, un PIANO
-  di al massimo 3 passi dal catalogo, le missioni scelte e la rimisura dopo 14 giorni. Usala quando
-  la persona scrive /second-brain:onboarding, «iniziamo», «riprendiamo», «let's start», «let's
-  resume», oppure quando l'hook di avvio propone la rimisura e la persona dice sì. Riparte sempre
-  da second-brain/.onboarding/stato.json se esiste.
+  Runs the second brain onboarding: an upgrade for any level, not an installer. Usually between
+  minute 15 and 25 a first real result, then a MAP of what you have, a PLAN of at most 3 steps from
+  the catalog, the chosen missions and a re-measure after 14 days. Use it on /second-
+  brain:onboarding, "start the onboarding", "let's start", "let's resume", or when the start-up hook
+  offers the re-measure and the person says yes. Always resumes from second-
+  brain/.onboarding/stato.json if it exists. — Regia dell'onboarding del second brain: un upgrade
+  per qualsiasi livello, non un installatore. Di solito fra il minuto 15 e il 25 un primo risultato
+  vero, poi la MAPPA, un PIANO di al massimo 3 passi dal catalogo, le missioni scelte e la rimisura
+  dopo 14 giorni. Usala con /second-brain:onboarding, «avvia l'onboarding», «iniziamo»,
+  «riprendiamo», oppure quando l'hook di avvio propone la rimisura e la persona dice sì. Riparte
+  sempre da second-brain/.onboarding/stato.json se esiste.
 argument-hint: "[riprendiamo | rimisura | salta | più piano | più veloce]"
 ---
 
@@ -27,6 +32,12 @@ File di questa skill, da leggere quando servono:
 - `tono.md` — T0-T3, frasi fisse IT/EN, parole da evitare.
 - Skill `primo-risultato` (fase 2), `piano-upgrade` (fase 5), `installa` (fase 6), `mappa-vault`
   (per chi ha già un vault), `salva-in-memoria` (fase 3).
+  **Come si aprono.** Tutte le skill del kit tranne questa e `aiuto` hanno
+  `disable-model-invocation: true`, così non stanno nel contesto di ogni sessione: lo strumento
+  Skill non le apre. Quando qui (o dentro un'altra skill) leggi «apri la skill `<nome>`» o «con
+  `<nome>`», leggi il file `${CLAUDE_PLUGIN_ROOT}/skills/<nome>/SKILL.md` (se la variabile resta
+  vuota: `../<nome>/SKILL.md` rispetto a questo file) e seguilo. La persona può sempre aprirle a
+  mano con `/second-brain:<nome>`.
 - Sotto-agenti `studia` (sola lettura) e `revisore`. Nell'elenco degli agenti possono comparire
   come `second-brain:studia` e `second-brain:revisore`.
 - Modelli in `${CLAUDE_PLUGIN_ROOT}/modelli/` (`MAPPA.md`, `PIANO-UPGRADE.md`, `stato.json`,

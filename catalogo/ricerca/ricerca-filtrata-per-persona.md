@@ -5,7 +5,7 @@ area: ricerca
 dove_gira: server
 livello: avanzato
 costo: "0 € in più sul server che avevo già. Sviluppo e prove: qualche giornata di lavoro."
-pacchetto: nessuno: solo idea
+pacchetto: "nessuno: solo idea"
 stato: lo uso
 ---
 

@@ -9,7 +9,10 @@ Uso (la cartella di lavoro e' quella corrente, oppure --cartella <dir>; l'onboar
 passa sempre --cartella con la cartella di lavoro confermata dalla persona):
   stato.py crea [--lingua it|en]       crea lo stato se manca (non sovrascrive mai).
                                        Rifiuta la cartella personale intera, la radice,
-                                       Scrivania, Download e Documenti interi.
+                                       Scrivania, Download e Documenti interi, la
+                                       cartella del kit (e le sue sottocartelle) e le
+                                       radici intere di OneDrive, iCloud Drive, Dropbox
+                                       e Google Drive (le loro sottocartelle vanno bene).
   stato.py leggi                       stampa la riga di ripresa
   stato.py mostra                      stampa tutto il JSON
   stato.py imposta <chiave.sotto> <valore>   valore JSON (numero, true, [..]) o testo
@@ -41,8 +44,83 @@ class ErroreUso(Exception):
     pass
 
 
-def cartella_vietata(cartella):
+MSG_KIT = {
+    "it": "questa è la cartella del kit: apri Claude nella cartella dove lavori",
+    "en": "this is the kit folder: open Claude in the folder where you work",
+}
+MSG_NUVOLA = {
+    "it": "%s è la radice intera di un servizio cloud (OneDrive, iCloud Drive, Dropbox, Google Drive): "
+          "usa una sua sottocartella dedicata (per esempio %s)",
+    "en": "%s is the whole root of a cloud drive (OneDrive, iCloud Drive, Dropbox, Google Drive): "
+          "use a dedicated subfolder inside it (for example %s)",
+}
+# radici dei servizi cloud, per inizio del nome (minuscolo): «OneDrive - Azienda», «Dropbox (Personal)»,
+# «GoogleDrive-nome@...» (Mac), «iCloudDrive» (Windows), «com~apple~CloudDocs» (Mac)
+NUVOLE = ("onedrive", "dropbox", "google drive", "googledrive", "icloud drive", "iclouddrive",
+          "com~apple~clouddocs")
+# dentro una radice di Google Drive, anche queste sono intere (nomi nelle lingue piu' comuni)
+NUVOLE_DRIVE = ("my drive", "il mio drive", "mi unidad", "mon drive", "meine ablage", "o meu disco",
+                "shared drives", "drive condivisi", "unidades compartidas", "drives partages",
+                "drives partagés", "geteilte ablagen", "other computers", "altri computer")
+
+
+def cartella_del_kit(cartella):
+    """True se la cartella e' la repo del kit (o una sua sottocartella)."""
+    c = os.path.realpath(cartella)
+    if (os.path.isfile(os.path.join(c, ".claude-plugin", "marketplace.json"))
+            or os.path.isdir(os.path.join(c, "plugin", "second-brain"))):
+        return True
+    # una sottocartella della repo (catalogo/, pacchetti/...): si riconosce dalla radice
+    su = os.path.dirname(c)
+    while su and su != c:
+        if (os.path.isfile(os.path.join(su, ".claude-plugin", "marketplace.json"))
+                and os.path.isdir(os.path.join(su, "plugin", "second-brain"))):
+            return True
+        c, su = su, os.path.dirname(su)
+    return False
+
+
+def _nome(p):
+    return os.path.basename(p.rstrip("\\/")).lower()
+
+
+def _inizia_con(nome, basi):
+    """«OneDrive», «OneDrive - Azienda», «Dropbox (Personal)», «GoogleDrive-nome»: si'. «Dropboxer»: no."""
+    return any(nome == b or (nome.startswith(b) and nome[len(b)] in " -_(.") for b in basi)
+
+
+def radice_nuvola(cartella):
+    """True se la cartella e' la radice intera di OneDrive, iCloud Drive, Dropbox o Google Drive
+    (Windows, Mac, Linux). Le loro sottocartelle vanno bene."""
+    c = os.path.realpath(cartella)
+    home = os.path.realpath(os.path.expanduser("~"))
+    padre = os.path.dirname(c.rstrip("\\/")) or c
+    radice_disco = os.path.realpath(os.path.join(padre, os.pardir)) == os.path.realpath(padre)
+    nome, nome_padre = _nome(c), _nome(padre)
+    # le variabili che Windows imposta per OneDrive
+    for v in ("OneDrive", "OneDriveConsumer", "OneDriveCommercial"):
+        x = os.environ.get(v)
+        if x and os.path.normcase(os.path.realpath(x)) == os.path.normcase(c):
+            return True
+    cloudstorage = os.path.normcase(os.path.realpath(os.path.join(home, "Library", "CloudStorage")))
+    if os.path.normcase(c) == cloudstorage:
+        return True
+    basi = {os.path.normcase(home), cloudstorage}
+    if _inizia_con(nome, NUVOLE) and (os.path.normcase(padre) in basi or radice_disco):
+        return True
+    # Google Drive: «G:\My Drive» su Windows, «.../GoogleDrive-nome/My Drive» su Mac
+    if nome in NUVOLE_DRIVE and (radice_disco or _inizia_con(nome_padre, ("googledrive", "google drive"))):
+        return True
+    return False
+
+
+def cartella_vietata(cartella, lingua="it"):
     """Un messaggio se la cartella non va bene come cartella di lavoro, altrimenti None."""
+    lingua = lingua if lingua in LINGUE else "it"
+    if cartella_del_kit(cartella):
+        return MSG_KIT[lingua]
+    if radice_nuvola(cartella):
+        return MSG_NUVOLA[lingua] % (cartella, os.path.join(cartella, "Lavoro" if lingua == "it" else "Work"))
     c = os.path.normcase(os.path.realpath(cartella))
     home = os.path.normcase(os.path.realpath(os.path.expanduser("~")))
     if c == os.path.normcase(os.path.realpath(os.path.join(c, os.pardir))) or c.lower().rstrip("\\/") in ("/home", "/users", "c:\\users"):
@@ -218,25 +296,23 @@ def _main(argv):
     if cmd == "crea":
         # prima la cartella, poi l'esistenza: uno stato vecchio nella cartella personale
         # (versioni precedenti del kit) non deve far ripartire da li' in silenzio
-        no = cartella_vietata(cartella) if os.path.isdir(cartella) else None
-        if no:
-            raise ErroreUso("Rifiuto: " + no + "." + (
-                " C'e' uno stato vecchio in %s: si puo' spostare nella cartella di lavoro scelta." % p
-                if os.path.exists(p) else ""))
-        if os.path.exists(p):
-            print("esiste gia': " + p)
-            return 0
         lingua = "it"
         if "--lingua" in resto:
             j = resto.index("--lingua")
             if j + 1 >= len(resto) or resto[j + 1].lower() not in LINGUE:
                 raise ErroreUso("--lingua vuole it oppure en")
             lingua = resto[j + 1].lower()
+        rifiuto = "Refused: " if lingua == "en" else "Rifiuto: "
+        no = cartella_vietata(cartella, lingua) if os.path.isdir(cartella) else None
+        if no:
+            raise ErroreUso(rifiuto + no + "." + (
+                " C'e' uno stato vecchio in %s: si puo' spostare nella cartella di lavoro scelta." % p
+                if os.path.exists(p) else ""))
+        if os.path.exists(p):
+            print("esiste gia': " + p)
+            return 0
         if not os.path.isdir(cartella):
             raise ErroreUso("la cartella non esiste: " + cartella)
-        no = cartella_vietata(cartella)
-        if no:
-            raise ErroreUso("Rifiuto: " + no + ".")
         os.makedirs(os.path.dirname(p), exist_ok=True)
         os.makedirs(os.path.join(cartella, "second-brain", "output"), exist_ok=True)
         shutil.copyfile(MODELLO, p)

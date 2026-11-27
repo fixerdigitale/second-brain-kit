@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Ponte telefono: un lavoro lungo chiede l'ok sul telefono e riparte da solo quando rispondi.
 
-    python3 ponte_telefono.py configura                  crea ~/.claude/ponte/config.json con un argomento casuale
+    python3 ponte_telefono.py configura [--testo-libero] crea ~/.claude/ponte/config.json con un argomento casuale
     python3 ponte_telefono.py chiedi <id> "<domanda>" [--cartella DIR]
                                                          manda la domanda al telefono (con i bottoni Sì / No)
     python3 ponte_telefono.py giro [--prova]             legge le risposte e fa ripartire Claude Code (--prova: registra le risposte, non lancia)
@@ -10,12 +10,17 @@
 
 Canali:
   - "ntfy": notifiche push con l'app gratuita ntfy (https://ntfy.sh, o un server ntfy tuo).
-    La domanda arriva con due bottoni; per una risposta libera pubblichi sull'argomento delle
-    risposte un messaggio «<codice> <testo>».
+    La domanda arriva con due bottoni, Sì e No.
   - "file": niente rete, per le prove. Le domande vanno in ~/.claude/ponte/uscita/, le risposte
     si leggono da ~/.claude/ponte/risposte-finte.txt (una riga «<codice> <testo>»).
 
-Ogni domanda ha un codice casuale: una risposta senza il codice giusto si ignora.
+Ogni domanda ha un codice casuale: serve ad ABBINARE la risposta alla domanda giusta, non a
+proteggerla. Su ntfy.sh il codice viaggia sullo stesso argomento pubblico: chi conosce il nome
+dell'argomento lo vede e può rispondere al posto tuo. Per questo, di serie, dal telefono si
+accettano solo «sì» e «no» (i bottoni): un testo diverso si ignora e non entra mai nel prompt.
+Il testo libero (una correzione scritta, che diventa istruzione per Claude) si accende solo con
+«configura --testo-libero» o con "testo_libero": true in config.json, a tuo rischio.
+La risposta data dal PC con «rispondi» può sempre essere libera: non passa dalla rete.
 Una ripartenza alla volta; la domanda è segnata «in ripartenza» prima del lancio, così non
 riparte due volte per la stessa risposta. Se trova semaforo.py (accanto o in ~/.claude/semaforo/) e dice stop, aspetta.
 Solo libreria standard. Mac, Windows, Linux.
@@ -45,6 +50,26 @@ Prima leggi HANDOFF.md in questa cartella (lì c'è lo stato e il prossimo passo
 Se la risposta è un no o una correzione, non andare avanti sul piano vecchio: aggiorna HANDOFF.md e fermati.
 Se ti serve un altro ok, aggiorna HANDOFF.md e usa di nuovo: python3 "{script}" chiedi <id-nuovo> "<domanda>" --cartella "{cartella}".
 Niente invii a terzi senza un ok esplicito sul testo esatto."""
+
+
+SI = {"sì", "si", "s", "yes", "y", "ok"}
+NO = {"no", "n"}
+AVVISO_TESTO_LIBERO = ("ATTENZIONE: con il testo libero acceso, chi conosce il nome dell'argomento ntfy può "
+                       "scrivere istruzioni che Claude esegue nella cartella del progetto (con acceptEdits "
+                       "modifica i file). Usalo solo con un server ntfy tuo protetto da token.")
+
+
+def risposta_ammessa(c, testo):
+    """La risposta da mettere nel prompt, o None se va ignorata. Di serie solo «sì» o «no»."""
+    t = testo.strip()
+    pulita = t.lower().strip(" .!")
+    if pulita in SI:
+        return "sì"
+    if pulita in NO:
+        return "no"
+    if c.get("testo_libero") and t:
+        return t[:2000]
+    return None
 
 
 def carica(p, vuoto):
@@ -118,9 +143,11 @@ def configura(a):
         return
     c = {"canale": a.canale, "server": "https://ntfy.sh",
          "argomento": "ponte-" + secrets.token_urlsafe(18).replace("_", "").replace("-", "")[:24],
-         "ultimo_giro": time.time()}
+         "ultimo_giro": time.time(), "testo_libero": bool(a.testo_libero)}
     salva(CONFIG, c)
     print(f"Creato {CONFIG}.")
+    if a.testo_libero:
+        print(AVVISO_TESTO_LIBERO)
     if a.canale == "ntfy":
         print("Nell'app ntfy del telefono iscriviti all'argomento scritto nel file (chiave «argomento»).")
         print("Non scriverlo in chat e non condividerlo: chi lo conosce legge le domande.")
@@ -135,7 +162,9 @@ def chiedi(a):
     testo = a.domanda.strip()[:3500]
     dom[a.id] = {"codice": codice, "domanda": testo, "cartella": str(Path(a.cartella).resolve()),
                  "stato": "in_attesa", "chiesta": time.time()}
-    manda(c, codice, f"{testo}\n\nRispondi con i bottoni, oppure «{codice} <testo>».")
+    coda = (f"Rispondi con i bottoni, oppure «{codice} <testo>»." if c.get("testo_libero")
+            else "Rispondi con i bottoni Sì / No.")
+    manda(c, codice, f"{testo}\n\n{coda}")
     salva(DOMANDE, dom)
     print(f"Domanda «{a.id}» mandata (codice {codice}). Ora puoi fermarti: riparto quando risponde.")
 
@@ -161,12 +190,20 @@ def semaforo_rosso():
 def giro(a):
     c = config()
     dom = carica(DOMANDE, {})
+    if c.get("testo_libero"):
+        print(AVVISO_TESTO_LIBERO)
     per_codice = {d["codice"]: k for k, d in dom.items() if d["stato"] == "in_attesa"}
     for testo, quando in risposte_arrivate(c, c.get("ultimo_giro", time.time()) - 60):
         codice, _, resto = testo.partition(" ")
         k = per_codice.get(codice.strip().lower())
-        if k:
-            dom[k].update(stato="risposta", risposta=resto.strip() or "(vuota)", risposta_il=quando)
+        if not k:
+            continue
+        risposta = risposta_ammessa(c, resto)
+        if risposta is None:
+            print(f"«{k}»: risposta ignorata, dal telefono valgono solo sì o no (testo libero spento).")
+            continue
+        dom[k].update(stato="risposta", risposta=risposta, risposta_il=quando)
+        per_codice.pop(codice.strip().lower(), None)  # la prima risposta valida vince
     c["ultimo_giro"] = time.time()
     salva(CONFIG, c)
     salva(DOMANDE, dom)
@@ -212,7 +249,10 @@ def stato(_a):
 def main():
     p = argparse.ArgumentParser(description="Ok dal telefono e ripartenza automatica.")
     sub = p.add_subparsers(dest="comando", required=True)
-    s = sub.add_parser("configura"); s.add_argument("--canale", choices=["ntfy", "file"], default="ntfy"); s.set_defaults(f=configura)
+    s = sub.add_parser("configura"); s.add_argument("--canale", choices=["ntfy", "file"], default="ntfy")
+    s.add_argument("--testo-libero", action="store_true",
+                   help="accetta dal telefono anche testo libero, non solo sì/no (rischioso su ntfy.sh)")
+    s.set_defaults(f=configura)
     s = sub.add_parser("chiedi"); s.add_argument("id"); s.add_argument("domanda"); s.add_argument("--cartella", default="."); s.set_defaults(f=chiedi)
     s = sub.add_parser("rispondi"); s.add_argument("id"); s.add_argument("testo"); s.set_defaults(f=rispondi_locale)
     s = sub.add_parser("giro"); s.add_argument("--prova", action="store_true"); s.add_argument("--claude"); s.set_defaults(f=giro)

@@ -10,7 +10,7 @@ stato: lo uso
 ---
 # Quando Claude viene bloccato, si ferma e chiede
 
-**Il problema.** Nella modalità automatica Claude Code ha un controllo che a volte nega un'azione a rischio, per esempio un rilascio in produzione, un timer permanente o una scrittura sul server di un cliente, anche quando in chat ho già detto sì. La tentazione, per Claude, è trovare un'altra strada per fare la stessa cosa.
+**Il problema.** Nella modalità automatica Claude Code ha un controllo che a volte nega un'azione a rischio, per esempio un rilascio in produzione, un timer permanente o una scrittura su un altro server, anche quando in chat ho già detto sì. La tentazione, per Claude, è trovare un'altra strada per fare la stessa cosa.
 
 **Come l'ho risolto.** Ho una regola fissa. Se un'azione viene negata, Claude si ferma e mi dice cosa voleva fare e perché. Se do l'ok scritto nominando l'azione precisa, non un «sì» generico, riprova una volta lo stesso comando identico. Se viene negato di nuovo, mi propone una regola di permesso o mi dà il comando da lanciare io. Niente giri: altro strumento, comando spezzato, file rinominato. In più tiene le azioni che cambiano qualcosa in un comando separato dalle letture, così se viene negato si capisce perché.
 

@@ -13,7 +13,7 @@ status: "I use it"
 
 **The problem.** On the server there are AI agents running (with OpenClaw, in my case) that receive messages from outside: chats, emails, web pages. A message written on purpose could convince an agent to do something it shouldn't. If the agent had administrator permissions, the damage would have no limit.
 
-**How I solved it.** The agents run as their own system user, not an administrator. They can run as administrator only a few specific commands, written one by one in the sudo list (for example sending me an alert). I work with Claude Code as administrator, but I never run files that live in the agents' folders, because an agent could have changed them. I don't load their secrets file as a script. When I need to write into their files I use a dedicated little program that doesn't follow links they created.
+**How I solved it.** The agents run as their own system user, not an administrator. Only a few specific commands get higher permissions, written one by one in the sudo list. With Claude Code I never run files that live in the agents' folders, because an agent could have changed them. I don't load their secrets file as a script. When I need to write into their files I use a dedicated little program that doesn't follow links they created.
 
 **Why this way.** If an agent gets tricked, the damage stays inside its folder. It's the same principle as Claude Code's permissions: everyone has only what they need.
 

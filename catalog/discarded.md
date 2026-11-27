@@ -244,9 +244,9 @@ The entries are grouped by area, like the catalog cards. The dates are when I ma
 
 ### Plugins with administrator permissions to let the AI work on WordPress
 - **What it promised.** Full AI access to the sites, code included.
-- **Why I tried it.** I found it already installed on some sites I look after.
+- **Why I tried it.** I found it already installed on some WordPress sites.
 - **Why I let it go.** With administrator permissions, whoever steals the key from the server can control every site.
-- **What I use instead.** A dedicated plugin that only touches content, with one key per site that can be revoked in one click, and only signed updates.
+- **What I use instead.** A dedicated plugin that only touches content, with one key per site that can be revoked.
 - **When it might suit you.** For bugs and custom work done by a developer, not for an AI working on its own.
 - **When.** November 2026.
 
@@ -313,8 +313,8 @@ The entries are grouped by area, like the catalog cards. The dates are when I ma
 ### Remote access to team PCs with Tailscale
 - **What it promised.** Getting into PCs remotely to set them up and run jobs on them.
 - **Why I tried it.** I wanted to set up a laptop from a distance and connect a coding model on my PC.
-- **Why I let it go.** For the laptop I'd have needed a paid plan for tags, and the PC had ended up on the wrong network. For my own PC I didn't need it: I already had time-limited SSH access.
-- **What I use instead.** Claude Code installed on the laptop with a written brief; time-limited SSH to my PC.
+- **Why I let it go.** For the laptop I'd have needed a paid plan for tags, and the PC had ended up on the wrong network. For my own PC I didn't need it: I already had another way to reach it.
+- **What I use instead.** Claude Code installed on the laptop with a written brief.
 - **When it might suit you.** If you manage many team PCs remotely, on an ongoing basis.
 - **When.** November 2026.
 
@@ -356,7 +356,7 @@ The entries are grouped by area, like the catalog cards. The dates are when I ma
 
 ### Suggesting a client a different tool from mine without a verified reason
 - **What it promised.** A lighter login system (Authelia instead of Authentik, in the case I saw).
-- **Why I tried it.** The AI had suggested it for a client's server without looking at the server.
+- **Why I tried it.** The AI had suggested it for a server without looking at its setup.
 - **Why I let it go.** There was no good reason: the server had plenty of memory. An unjustified difference undermines trust in the proposal. What matters to me is that the tool is as functional and secure as possible, not which one it is.
 - **What I use instead.** The same tool I use, unless there's a reason verified on the server and written into the proposal.
 - **When it might suit you.** On a small server with little memory, a lighter login system can really be the right choice.

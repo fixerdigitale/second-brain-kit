@@ -1,6 +1,15 @@
 ---
 name: mappa-vault
-description: Guarda un vault di note già esistente (cartelle markdown usate con Claude Code) in sola lettura, ne disegna la mappa (struttura, numeri, CLAUDE.md, memoria, skill, agenti, MCP, hook, permessi, backup, uso quotidiano), scrive cosa funziona già, chiede dove si inceppa e propone al massimo 3 miglioramenti presi dal catalogo «Cosa uso io». Usala quando la persona dice «guarda il mio vault», «mappa il mio second brain», «cosa posso migliorare nel mio sistema», «come è fatto il mio setup di Claude», o prima di aggiungere pezzi nuovi a un vault che c'è già. Non modifica niente da sola.
+description: >
+  Looks at an existing vault of notes read-only, maps it (structure, numbers, CLAUDE.md, memory,
+  skills, agents, MCP, hooks, permissions, backups, daily use), writes what already works, asks
+  where it gets stuck and suggests at most 3 improvements from the catalog. Changes nothing on its
+  own. Opened by the onboarding or with /second-brain:mappa-vault. — Guarda in sola lettura un vault
+  di note che c'è già, ne disegna la mappa (struttura, numeri, CLAUDE.md, memoria, skill, agenti,
+  MCP, hook, permessi, backup, uso quotidiano), scrive cosa funziona già, chiede dove si inceppa e
+  propone al massimo 3 miglioramenti dal catalogo. Da sola non modifica niente. La apre l'onboarding
+  o /second-brain:mappa-vault.
+disable-model-invocation: true
 ---
 
 # Mappa del vault

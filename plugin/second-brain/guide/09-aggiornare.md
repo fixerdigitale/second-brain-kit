@@ -21,6 +21,8 @@ Se nel blocco del metodo avevi cambiato qualcosa a mano, `/second-brain:aggiorna
 
 Di serie è **spento**: niente cambia senza che tu lo chieda. Se vuoi che Claude Code controlli da solo le versioni nuove, in `/plugin` → **Marketplaces** → `second-brain-kit` accendi l'aggiornamento automatico. Il passo 2 (`/second-brain:aggiorna`) resta sempre manuale.
 
+Una cosa da sapere prima di accenderlo: un aggiornamento porta codice nuovo (skill, hook, script) che poi gira sul tuo PC, con i permessi che dai a Claude Code. Con l'aggiornamento automatico arriva senza che tu lo veda. Io preferisco leggere prima il `CHANGELOG.md` della versione nuova, e aggiornare a mano quando mi torna.
+
 ## Cosa è cambiato
 
 Le novità di ogni versione sono in `CHANGELOG.md`, nella pagina del pacchetto su GitHub. `/second-brain:aggiorna` te le riassume.
@@ -28,8 +30,8 @@ Le novità di ogni versione sono in `CHANGELOG.md`, nella pagina del pacchetto s
 ## Se qualcosa va storto
 
 - Ogni file cambiato ha una copia accanto, con la data nel nome (`CLAUDE.md.bak-20261120-second-brain`). Per tornare indietro: «rimetti la copia di CLAUDE.md di oggi».
-- Se una versione nuova del pacchetto non ti convince, scrivilo a chi te l'ha data: si può tornare alla versione di prima.
-- Se il passo 1 si ferma con «HTTPS authentication failed» o «could not read Username», il collegamento fra il computer e GitHub non c'è più (per esempio dopo un cambio di password). Rifallo come al passo 2 del README del pacchetto: in Git Bash (su Mac nel Terminale) scrivi `gh auth login --hostname github.com --git-protocol https --web`, poi riprova l'aggiornamento.
+- Se una versione nuova del pacchetto non ti convince, puoi lasciare le novità fuori dalla tua cartella: a `/second-brain:aggiorna` rispondi no, oppure rimetti le copie con la data. Se trovi un problema, puoi aprire una issue sulla pagina del kit su GitHub.
+- Il repository è pubblico: per aggiornare non serve un accesso a GitHub. Se il passo 1 si ferma con un errore di rete, controlla la connessione e riprova più tardi.
 
 ## Prova adesso (2 minuti)
 

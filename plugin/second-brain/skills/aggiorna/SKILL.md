@@ -1,6 +1,9 @@
 ---
 name: aggiorna
-description: Aggiorna Second Brain nella cartella di lavoro mostrando ogni modifica e proteggendo i file personali.
+description: >
+  Updates Second Brain in your work folder, showing every change and protecting your personal files.
+  Opened with /second-brain:aggiorna. — Aggiorna Second Brain nella cartella di lavoro mostrando
+  ogni modifica e proteggendo i file personali. Si apre con /second-brain:aggiorna.
 disable-model-invocation: true
 ---
 

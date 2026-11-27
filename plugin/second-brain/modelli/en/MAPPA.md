@@ -17,7 +17,7 @@
 ## The 8 areas
 | Area | Status (there / missing / not needed now) | Evidence (file:line or count) |
 |---|---|---|
-| Context | <🟢 there / 🔴 missing / ⚪ not needed now — in T2-T3 also the 0-3 score> | <…> |
+| Context | <🟢 there / 🔴 missing / ⚪️ not needed now — in T2-T3 also the 0-3 score> | <…> |
 | Memory | | |
 | Corrections | | |
 | Method | | |

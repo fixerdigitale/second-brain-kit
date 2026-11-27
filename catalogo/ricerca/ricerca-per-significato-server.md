@@ -5,7 +5,7 @@ area: ricerca
 dove_gira: server
 livello: avanzato
 costo: "0 € in più se hai già un server: Ollama e nomic-embed-text sono gratuiti e il modello pesa 274 MB. Senza server, un VPS parte da qualche euro al mese, più qualche ora per installare e collegare tutto."
-pacchetto: nessuno: solo idea
+pacchetto: "nessuno: solo idea"
 stato: lo uso
 ---
 

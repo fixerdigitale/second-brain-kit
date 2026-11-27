@@ -5,7 +5,7 @@ area: ricerca
 dove_gira: PC
 livello: medio
 costo: "0 € nella versione locale (open source, AGPL v3). Circa 20 minuti per installarlo e collegarlo."
-pacchetto: nessuno: solo idea
+pacchetto: "nessuno: solo idea"
 stato: proposta nuova, non la uso così
 ---
 

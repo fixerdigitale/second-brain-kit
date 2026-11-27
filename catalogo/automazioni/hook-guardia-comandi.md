@@ -15,7 +15,7 @@ stato: "versione per PC del mio"
 
 **Come l'ho risolto.** Ho messo un hook PreToolUse che legge ogni comando prima che parta: se è il lancio sbagliato lo blocca e nel motivo scrive il comando giusto, già pronto. Claude legge e si corregge da solo. Da me registra anche ogni lancio: su 774 ne ha fermati 7. Per il PC ho scritto una versione generale: le regole stanno in un file JSON (strumento, espressione da cercare, eccezione, «ferma» o «chiedi conferma», messaggio con il modo giusto). Ci sono tre esempi: push forzati, cancellazioni ricorsive, scritture nei file .env.
 
-**Perché così.** Una regola che dipende dalla memoria di Claude prima o poi si sbaglia, una regola in un hook no. Quello che la fa funzionare, per me, è il messaggio: se dice anche come si fa bene, Claude non riprova uguale, si corregge.
+**Perché così.** Una regola che dipende dalla memoria di Claude prima o poi si sbaglia, una regola in un hook non dipende dalla sua memoria. È un promemoria, non una barriera: le espressioni regolari coprono le forme che ho previsto; per bloccare davvero uso `permissions.deny`. Quello che la fa funzionare, per me, è il messaggio: se dice anche come si fa bene, Claude non riprova uguale, si corregge.
 
 **Quando ti serve.** Quando hai una regola ripetuta più volte che Claude continua a sbagliare: comandi pericolosi, un modo preciso di fare il deploy, file da non toccare.
 

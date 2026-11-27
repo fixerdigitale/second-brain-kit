@@ -13,7 +13,7 @@ stato: versione per PC del mio
 
 **Il problema.** Lavoro con molte sessioni in parallelo, anche dal telefono. Dicevo «come ti ho chiesto ieri» e la sessione nuova non ne sapeva niente.
 
-**Come l'ho risolto.** Da me un servizio senza AI, tre volte al giorno (7:40, 13:05, 19:05), raccoglie in un solo file le mie richieste delle ultime sessioni di Claude Code, più call registrate, task e calendario, e lo mette dove lo leggono sia Claude sia gli agenti. Prende solo i miei messaggi, non le risposte. CLAUDE.md dice: se parlo di un lavoro che qui non vedi, leggi quel file. Nel pacchetto c'è la parte che vale per un PC: uno script Python che legge le sessioni di Claude Code in `~/.claude/projects` e scrive un markdown con solo i tuoi messaggi, per progetto e per sessione, oscurando quello che sembra una chiave.
+**Come l'ho risolto.** Da me un servizio senza AI, tre volte al giorno (mattina, ora di pranzo, sera), raccoglie in un solo file le mie richieste delle ultime sessioni di Claude Code, più call registrate, task e calendario, e lo mette dove lo leggono sia Claude sia gli agenti. Prende solo i miei messaggi, non le risposte. CLAUDE.md dice: se parlo di un lavoro che qui non vedi, leggi quel file. Nel pacchetto c'è la parte che vale per un PC: uno script Python che legge le sessioni di Claude Code in `~/.claude/projects` e scrive un markdown con solo i tuoi messaggi, per progetto e per sessione, oscurando quello che sembra una chiave.
 
 **Perché così.** Raccogliere non richiede intelligenza, quindi niente modello: costa zero e non sbaglia. Un file compatto si legge in un attimo; scavare ogni volta nei file delle sessioni costa contesto. Solo i miei messaggi perché sono quelli che dicono cosa voglio, e tengono il file corto e meno delicato.
 

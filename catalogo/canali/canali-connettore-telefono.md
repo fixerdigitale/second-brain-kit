@@ -12,7 +12,7 @@ stato: "lo uso"
 
 **Il problema.** Da claude.ai sul telefono Claude non sapeva niente di me: né le note, né le sessioni di lavoro della mattina, né cosa stava girando sul server.
 
-**Come l'ho risolto.** Ho un connettore MCP personale (un indirizzo che aggiungo in claude.ai come connettore) con login OAuth e password. Da lì Claude sul telefono legge le mie sessioni di Claude Code e la memoria, guarda file e log del server in sola lettura con i segreti oscurati, cerca nella memoria del mio assistente principale e, con uno strumento apposta, fa lavorare Claude Code sul server come se fossi al PC. Quelle sessioni restano separate da quelle di VS Code, ma sono salvate e le ritrovo.
+**Come l'ho risolto.** Ho un connettore MCP personale (un indirizzo che aggiungo in claude.ai come connettore) protetto da un login. Da lì Claude sul telefono legge le mie sessioni di Claude Code e la memoria, guarda file e log del server in sola lettura con i segreti oscurati, cerca nella memoria del mio assistente principale e, con uno strumento apposta, fa partire un lavoro di Claude Code sul server. Quelle sessioni restano separate da quelle di VS Code, ma sono salvate e le ritrovo.
 
 **Perché così.** Il telefono diventa un terminale vero del mio sistema, non una chat che riparte da zero. Lo uso per controllare a che punto è un lavoro o far partire una cosa piccola senza aprire il PC.
 

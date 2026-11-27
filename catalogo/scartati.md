@@ -244,9 +244,9 @@ Le voci sono divise per area, come le schede del catalogo. Le date sono quelle d
 
 ### Plugin con permessi da amministratore per far lavorare l'AI su WordPress
 - **Cosa prometteva.** Accesso completo dell'AI ai siti, codice compreso.
-- **Perché l'ho provato.** L'ho trovato già installato su alcuni siti che seguo.
+- **Perché l'ho provato.** L'ho trovato già installato su alcuni siti WordPress.
 - **Perché l'ho lasciato.** Con permessi da amministratore, chi ruba la chiave dal server può comandare tutti i siti.
-- **Cosa uso invece.** Un plugin dedicato che tocca solo i contenuti, con una chiave per sito che si stacca con un clic e aggiornamenti solo firmati.
+- **Cosa uso invece.** Un plugin dedicato che tocca solo i contenuti, con una chiave per sito che si può revocare.
 - **Quando a te potrebbe servire.** Per bug e lavori su misura fatti da uno sviluppatore, non per un'AI che lavora da sola.
 - **Quando.** Novembre 2026.
 
@@ -313,8 +313,8 @@ Le voci sono divise per area, come le schede del catalogo. Le date sono quelle d
 ### Accesso remoto con Tailscale ai PC del team
 - **Cosa prometteva.** Entrare da remoto nei PC per configurarli e lanciarci lavori.
 - **Perché l'ho provato.** Volevo preparare un portatile a distanza e collegare un modello di codice sul mio PC.
-- **Perché l'ho lasciato.** Per il portatile serviva un piano a pagamento per le etichette, e il PC era finito nella rete sbagliata. Per il mio PC non serviva: avevo già un accesso SSH a tempo.
-- **Cosa uso invece.** Claude Code installato sul portatile con un brief scritto; SSH a tempo verso il mio PC.
+- **Perché l'ho lasciato.** Per il portatile serviva un piano a pagamento per le etichette, e il PC era finito nella rete sbagliata. Per il mio PC non serviva: avevo già un altro modo per raggiungerlo.
+- **Cosa uso invece.** Claude Code installato sul portatile con un brief scritto.
 - **Quando a te potrebbe servire.** Se gestisci da remoto molti PC del team, in modo stabile.
 - **Quando.** Novembre 2026.
 
@@ -356,7 +356,7 @@ Le voci sono divise per area, come le schede del catalogo. Le date sono quelle d
 
 ### Proporre a un cliente uno strumento diverso dal mio senza un motivo verificato
 - **Cosa prometteva.** Un sistema di login più leggero (Authelia invece di Authentik, nel caso che ho visto).
-- **Perché l'ho provato.** L'AI l'aveva proposto per il server di un cliente senza guardare il server.
+- **Perché l'ho provato.** L'AI l'aveva proposto per un server senza guardarne la configurazione.
 - **Perché l'ho lasciato.** Non c'era un motivo valido: il server aveva memoria in abbondanza. Una differenza non giustificata fa perdere fiducia nella proposta. A me interessa che lo strumento sia il più funzionale e sicuro possibile, non quale sia.
 - **Cosa uso invece.** Lo stesso strumento che uso io, salvo un motivo verificato sul server e scritto nella proposta.
 - **Quando a te potrebbe servire.** Su un server piccolo con poca memoria, un sistema di login più leggero può essere davvero la scelta giusta.

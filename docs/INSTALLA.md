@@ -7,10 +7,19 @@ Ci sono tre strade. Scegli quella che ti somiglia: puoi sempre cambiare dopo.
 | Strada | Per chi | Cosa ottieni |
 |---|---|---|
 | [A. Plugin dal marketplace](#a-plugin-dal-marketplace-da-github) | Hai Claude Code e vuoi gli aggiornamenti | Onboarding con `/second-brain:onboarding`, aggiornabile |
-| [B. Zip](#b-zip) | Non usi git, o vuoi tutto in una cartella tua | Stessa cosa, da una cartella sul tuo computer |
+| [B. Zip](#b-zip) | Preferisci avere il kit in una cartella sul tuo computer | Stessa cosa, da una copia locale |
 | [C. Solo catalogo](#c-solo-catalogo-senza-plugin) | Vuoi solo leggere e copiare qualche pezzo | Schede e pacchetti, niente onboarding |
 
-Prima di tutto serve **Claude Code installato, con il login fatto**. Per l'onboarding non serve altro; alcuni pacchetti usano script Python 3, e il loro LEGGIMI lo dice. Se non ce l'hai ancora, guarda [Prima di iniziare](#prima-di-iniziare).
+Prima di tutto servono:
+- un **piano Claude a pagamento**: basta Pro, il piano gratuito non ha Claude Code;
+- **Claude Code installato, con il login fatto**;
+- su Windows, **Git per Windows**.
+
+Per l'onboarding non serve altro; alcuni pacchetti usano script Python 3, e il loro LEGGIMI lo dice. Se non hai ancora Claude Code, guarda [Prima di iniziare](#prima-di-iniziare).
+
+**Quanto ci vuole.** Installazione: 2 minuti se hai già Claude Code. Primo risultato: 15-25 minuti. Giro completo: 30-45 minuti, anche in più volte.
+
+**Dove si fa l'onboarding.** Sempre nella **tua** cartella di lavoro: quella dove lavori di solito. Non nella cartella del kit, e non nella cartella personale intera, nella Scrivania, in Download o in Documenti interi.
 
 ---
 
@@ -23,7 +32,7 @@ Dentro Claude Code scrivi:
 /plugin install second-brain@second-brain-kit
 ```
 
-Poi riavvia Claude Code (chiudi e riapri la sessione) e scrivi:
+Quando te lo chiede, scegli l'installazione per te (a livello utente). Poi chiudi Claude Code e riaprilo nella tua cartella di lavoro (vedi [Dove usarlo](#dove-usarlo)), e scrivi:
 
 ```text
 /second-brain:onboarding
@@ -44,7 +53,7 @@ oppure, a parole, «avvia l'onboarding».
    /plugin install second-brain@second-brain-kit
    ```
    Su Windows il percorso è del tipo `C:\Users\<tuo-nome>\Documents\second-brain-kit`, oppure `C:\Users\<tuo-nome>\OneDrive\Documenti\second-brain-kit` se Windows tiene Documenti dentro OneDrive (in Esplora file, clic destro sulla cartella → «Copia come percorso»).
-4. Riavvia la sessione e scrivi «avvia l'onboarding» oppure `/second-brain:onboarding`.
+4. Chiudi Claude Code, riaprilo nella tua cartella di lavoro (non in quella del kit) e scrivi `/second-brain:onboarding` oppure «avvia l'onboarding».
 
 Per aggiornare scarica lo zip nuovo in una cartella nuova, poi ripeti il punto 3 con il nuovo percorso. Non cancellare la vecchia finché quella nuova non funziona.
 
@@ -83,17 +92,21 @@ Prima di copiare un hook o uno script, leggilo: gira sul tuo computer con i tuoi
 
 ## Dove usarlo
 
+Da qualunque parte lo apri, apri Claude Code nella tua cartella di lavoro, non in quella del kit.
+
 ### Terminale
 
+Entra nella tua cartella di lavoro e poi avvia Claude, un comando per riga (in Windows PowerShell 5.1 `&&` non funziona):
+
 ```bash
-cd second-brain-kit
+cd percorso/della/tua/cartella-di-lavoro
 claude
 ```
 
 ### VS Code
 
 1. Installa l'estensione **Claude Code** dal marketplace di VS Code.
-2. **File → Apri cartella** e scegli la cartella dove lavori (o quella del kit).
+2. **File → Apri cartella** e scegli la cartella dove lavori.
 3. Apri il pannello di Claude Code e scrivi i comandi della strada A o B.
 
 Se nella tua versione dell'estensione il comando `/plugin` non c'è, apri il terminale integrato di VS Code, scrivi `claude`, installa il plugin da lì e poi torna al pannello.
@@ -101,7 +114,7 @@ Se nella tua versione dell'estensione il comando `/plugin` non c'è, apri il ter
 ### App desktop
 
 1. Apri l'app Claude e passa alla sezione **Code**.
-2. Scegli come cartella di lavoro quella dove lavori (o quella del kit).
+2. Scegli come cartella di lavoro quella dove lavori.
 3. Scrivi i comandi della strada A o B.
 
 Se `/plugin` non risponde, installa il plugin una volta dal terminale come nella strada A: il plugin installato vale per il tuo utente, quindi lo ritrovi anche nell'app.
@@ -112,6 +125,8 @@ Se `/plugin` non risponde, installa il plugin una volta dal terminale come nella
 
 - **«marketplace not found» o errore di rete.** Controlla di aver scritto `fixerdigitale/second-brain-kit` e che il computer raggiunga GitHub. In alternativa usa la strada B.
 - **Il comando `/second-brain:onboarding` non compare.** Riapri la sessione dopo l'installazione e scrivi `/plugin` per vedere se `second-brain` è attivo.
+- **L'onboarding dice che sei nella cartella del kit.** Chiudi Claude Code e riaprilo nella cartella dove lavori: la cartella del kit serve solo da sorgente del plugin.
+- **Per segnalare un problema.** Apri una issue con il tuo sistema operativo, la versione di Claude Code e cosa è successo. Non incollare chiavi né log interi: bastano le righe intorno all'errore.
 - **Un errore che non capisci.** Copialo tutto in Claude Code e chiedi di spiegartelo prima di fare qualsiasi cosa.
 
 Non incollare mai password, chiavi o token nella chat.

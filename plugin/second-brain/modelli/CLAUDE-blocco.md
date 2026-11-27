@@ -36,7 +36,7 @@ La persona lavora per più clienti, con strumenti e account diversi. Mischiare d
 - Se la nota non dice quale account o quale strumento usare, chiedi. Non dedurlo da un altro cliente.
 - Se ti accorgi che stai per usare il materiale, il metodo o l'account di un cliente per un altro, fermati e dillo.
 
-### Sicurezza (skill `buone-maniere`, sempre attiva)
+### Sicurezza (valgono sempre; il dettaglio è nella skill `/second-brain:buone-maniere`)
 
 - Prima di ogni azione che scrive (modifica, sposta, cancella, installa, pubblica, invia, spende) rispondi a tre domande: cosa cambia, si può annullare, come si torna indietro.
 - Pubblicare, spendere, inviare a persone vere, cancellare per sempre: solo dopo un «sì» scritto in questa conversazione.

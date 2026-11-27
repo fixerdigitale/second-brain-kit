@@ -1,12 +1,14 @@
 ---
 name: salva-in-memoria
 description: >
-  Scrive nella memoria del second brain i fatti su clienti, progetti, persone e decisioni, e le
-  correzioni su come lavorare: nella cartella memoria/ del kit oppure, se la persona ha già un
-  vault, dentro il suo vault con i suoi cassetti e il suo formato. Usala quando
-  la persona dice «salva in memoria», «ricordati che», «scrivilo», quando racconta un fatto
-  stabile su un cliente o un progetto, quando ti corregge («così no, fai così», «te l'ho già
-  detto»), e alla fine di un lavoro importante per proporre una voce nella nota giusta.
+  Writes facts about clients, projects, people and decisions, and corrections on how to work, into
+  the second brain's memory: the kit's memoria/ folder or, if you already have a vault, your vault
+  with its own drawers and format. Shows what and where before writing. Opened by the onboarding or
+  with /second-brain:salva-in-memoria. — Scrive nella memoria del second brain i fatti su clienti,
+  progetti, persone e decisioni, e le correzioni su come lavorare: nella cartella memoria/ del kit
+  oppure, se c'è già un vault, nel vault con i suoi cassetti e il suo formato. Prima di scrivere
+  mostra cosa e dove. La apre l'onboarding o /second-brain:salva-in-memoria.
+disable-model-invocation: true
 ---
 
 # Salva in memoria

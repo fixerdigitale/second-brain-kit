@@ -15,7 +15,7 @@ status: "PC version of mine"
 
 **How I solved it.** I added a PreToolUse hook that reads every command before it runs: if it's the wrong launch it blocks it, and in the reason it writes the right command, ready to use. Claude reads it and corrects itself. On my side it also logs every launch: out of 774 it stopped 7. For the PC I wrote a general version: the rules live in a JSON file (tool, pattern to look for, exception, "block" or "ask for confirmation", message with the right way). There are three examples: force pushes, recursive deletes, writes to .env files.
 
-**Why this way.** A rule that depends on Claude's memory gets broken sooner or later; a rule in a hook doesn't. What makes it work, for me, is the message: if it also says how to do it right, Claude doesn't retry the same thing, it corrects itself.
+**Why this way.** A rule that depends on Claude's memory gets broken sooner or later; a rule in a hook doesn't depend on its memory. It's a reminder, not a barrier: the regular expressions cover the forms I foresaw; to actually block something I use `permissions.deny`. What makes it work, for me, is the message: if it also says how to do it right, Claude doesn't retry the same thing, it corrects itself.
 
 **When you need it.** When you have a rule you've repeated several times that Claude keeps getting wrong: dangerous commands, a specific way to deploy, files not to touch.
 

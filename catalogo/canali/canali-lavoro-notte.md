@@ -20,6 +20,6 @@ stato: "versione per PC del mio"
 
 **Quando ti serve.** Se a fine settimana ti avanza piano e hai lavori preparatori chiari che puoi descrivere in un brief.
 
-**Quando non ti serve.** Se il piano lo consumi già tutto di giorno, o se i tuoi lavori chiedono sempre tue decisioni a metà. Sul PC gira solo se il PC resta acceso e non va in sospensione. E lo script del pacchetto non legge il consumo del piano: si ferma solo a un'ora fissa (le 7), quindi la coda la tieni corta tu.
+**Quando non ti serve.** Se il piano lo consumi già tutto di giorno, o se i tuoi lavori chiedono sempre tue decisioni a metà. Sul PC gira solo se il PC resta acceso e non va in sospensione. E lo script del pacchetto non legge il consumo del piano: si ferma solo a un'ora fissa (le 7), quindi la coda la tieni corta tu. Lo «0 € in più» vale solo con l'abbonamento: controlla con /status che usi quello; con `ANTHROPIC_API_KEY` nell'ambiente lo script non parte senza `--anche-a-consumo`.
 
 **Come prenderlo.** Copia `coda.py`, metti in `VAULT` il percorso del vault, scrivi i lavori in `CODA.md` (un «## titolo» e il brief sotto) e pianificalo di notte con l'Utilità di pianificazione (Windows, con «Riattiva il computer») o cron (Mac). Il turno che si accende da solo quando sei fermo resta un'idea da server. Istruzioni passo passo: [LEGGIMI del pacchetto](../../pacchetti/canali-lavoro-notte/LEGGIMI.md).

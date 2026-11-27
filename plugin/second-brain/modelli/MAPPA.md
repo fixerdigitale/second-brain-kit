@@ -17,7 +17,7 @@
 ## Le 8 aree
 | Area | Stato (c'è / manca / non serve adesso) | Prova (file:riga o conteggio) |
 |---|---|---|
-| Contesto | <🟢 c'è / 🔴 manca / ⚪ non serve adesso — in T2-T3 anche il voto 0-3> | <…> |
+| Contesto | <🟢 c'è / 🔴 manca / ⚪️ non serve adesso — in T2-T3 anche il voto 0-3> | <…> |
 | Memoria | | |
 | Correzioni | | |
 | Metodo | | |

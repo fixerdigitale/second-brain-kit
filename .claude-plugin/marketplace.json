@@ -4,17 +4,24 @@
     "name": "Daniel Martines / Fixer Digitale"
   },
   "metadata": {
-    "description": "Il second brain di Daniel Martines con Claude Code: un onboarding che studia il tuo sistema prima di proporti qualcosa, più un catalogo di opzioni e di cose scartate.",
+    "description": "Daniel Martines's second brain with Claude Code: an onboarding that studies your setup before suggesting anything, plus a catalog of options and of things I dropped. — Il second brain di Daniel Martines con Claude Code: un onboarding che studia il tuo sistema prima di proporti qualcosa, più un catalogo di opzioni e di cose scartate.",
     "version": "2.0.0"
   },
   "plugins": [
     {
       "name": "second-brain",
       "source": "./plugin/second-brain",
-      "description": "Onboarding che studia il tuo sistema in sola lettura, ti dà un primo risultato, una mappa e un piano di al massimo 3 passi presi dal catalogo.",
+      "description": "An onboarding that first studies your setup (the first look is read-only), then gives you a first result, a map and a plan of at most 3 steps from the catalog. — Onboarding che prima studia il tuo sistema (il primo sguardo è in sola lettura), poi ti dà un primo risultato, una mappa e un piano di al massimo 3 passi presi dal catalogo.",
       "version": "2.0.0",
       "license": "MIT",
-      "keywords": ["second-brain", "memoria", "onboarding", "italiano"]
+      "keywords": [
+        "second-brain",
+        "memory",
+        "memoria",
+        "onboarding",
+        "english",
+        "italiano"
+      ]
     }
   ]
 }

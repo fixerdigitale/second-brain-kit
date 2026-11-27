@@ -4,6 +4,7 @@
 Uso:
     python3 coda.py                 # esegue i lavori di CODA.md non ancora fatti
     python3 coda.py --prova         # mostra cosa farebbe, senza lanciare niente
+    python3 coda.py --anche-a-consumo   # gira anche se c'e' ANTHROPIC_API_KEY (paghi a token)
 
 CODA.md (nel vault) ha un lavoro per sezione:
 
@@ -15,9 +16,17 @@ Ogni lavoro gira con `claude -p`, uno dopo l'altro. Il risultato va in
 con una casella si'/no per ogni consegna. Gli eseguiti vengono segnati in CODA.md come [fatto].
 
 Gira solo a PC acceso (e sveglio). Si ferma alle ORA_STOP per non trovarti il PC impegnato.
+
+Due freni:
+  - se nell'ambiente c'e' ANTHROPIC_API_KEY, `claude -p` userebbe la chiave a consumo invece
+    dell'abbonamento: la coda non parte, a meno di --anche-a-consumo;
+  - se il vault non e' sotto git, niente acceptEdits: senza una storia dei file una modifica
+    sbagliata della notte non si annulla. I lavori girano con i permessi "default" (le modifiche
+    ai file vengono negate) finche' non fai `git init` nel vault.
 """
 import argparse
 import datetime as dt
+import os
 import re
 import shutil
 import subprocess
@@ -49,10 +58,26 @@ def main() -> int:
     p = argparse.ArgumentParser()
     p.add_argument("--vault", default=str(VAULT))
     p.add_argument("--prova", action="store_true")
-    p.add_argument("--permessi", default="acceptEdits", help="default, acceptEdits o plan")
+    p.add_argument("--permessi", default="acceptEdits", choices=["default", "acceptEdits", "plan"])
+    p.add_argument("--anche-a-consumo", action="store_true",
+                   help="gira anche se ANTHROPIC_API_KEY e' impostata (consumo a token, non abbonamento)")
     a = p.parse_args()
 
+    if os.environ.get("ANTHROPIC_API_KEY") and not a.anche_a_consumo:
+        print("FERMO: nell'ambiente c'e' ANTHROPIC_API_KEY, quindi claude -p pagherebbe a consumo invece "
+              "di usare l'abbonamento. Toglila dall'ambiente di questa attivita' pianificata, oppure "
+              "rilancia con --anche-a-consumo se vuoi davvero pagare a token.")
+        if not a.prova:
+            return 2
+
     vault = Path(a.vault)
+    nota_permessi = ""
+    if a.permessi == "acceptEdits" and not (vault / ".git").exists():
+        a.permessi = "default"
+        nota_permessi = ("Il vault non e' sotto git: niente acceptEdits, i lavori girano con i permessi "
+                         "\"default\" (le modifiche ai file vengono negate). Per farli scrivere, fai prima "
+                         "`git init` e un commit nel vault.")
+        print(nota_permessi)
     coda = vault / "CODA.md"
     if not coda.exists():
         print(f"Manca {coda}: crealo con un '## titolo' e il brief sotto per ogni lavoro.")
@@ -64,7 +89,7 @@ def main() -> int:
     oggi = vault / "notte" / dt.date.today().isoformat()
     if a.prova:
         for t, _ in lavori:
-            print(f"- farei: {t}")
+            print(f"- farei: {t} (permessi: {a.permessi})")
         return 0
     oggi.mkdir(parents=True, exist_ok=True)
     claude = shutil.which("claude") or "claude"
@@ -91,6 +116,7 @@ def main() -> int:
     (oggi / "DA-RIVEDERE.md").write_text(
         f"# Lavoro della notte, {dt.date.today():%d/%m}\n\n"
         "Per ognuno: si' (lo tengo), no (lo butto) o la correzione. Niente e' stato mandato a nessuno.\n\n"
+        + (f"{nota_permessi}\n\n" if nota_permessi else "")
         + "\n".join(righe) + "\n", encoding="utf-8")
     print(f"Fatto. Da rivedere: {oggi / 'DA-RIVEDERE.md'}")
     return 0

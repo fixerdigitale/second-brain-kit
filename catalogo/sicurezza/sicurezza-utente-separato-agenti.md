@@ -12,7 +12,7 @@ stato: lo uso
 
 **Il problema.** Sul server girano agenti AI (con OpenClaw, nel mio caso) che ricevono messaggi da fuori: chat, email, pagine web. Un messaggio scritto apposta potrebbe convincere un agente a fare qualcosa che non deve. Se l'agente avesse i permessi di amministratore, il danno non avrebbe limiti.
 
-**Come l'ho risolto.** Gli agenti girano con un loro utente di sistema, non amministratore. Possono lanciare come amministratore solo pochi comandi precisi, scritti uno per uno nell'elenco di sudo (per esempio mandarmi un avviso). Io con Claude Code lavoro da amministratore, ma non eseguo mai file che stanno nelle cartelle degli agenti, perché un agente potrebbe averli cambiati. Non carico il loro file di segreti come uno script. Quando devo scrivere nei loro file uso un programmino apposta, che non segue i collegamenti creati da loro.
+**Come l'ho risolto.** Gli agenti girano con un loro utente di sistema, non amministratore. Solo pochi comandi precisi hanno permessi più alti, scritti uno per uno nell'elenco di sudo. Con Claude Code non eseguo mai file che stanno nelle cartelle degli agenti, perché un agente potrebbe averli cambiati. Non carico il loro file di segreti come uno script. Quando devo scrivere nei loro file uso un programmino apposta, che non segue i collegamenti creati da loro.
 
 **Perché così.** Se un agente viene ingannato, il danno resta dentro la sua cartella. È lo stesso principio dei permessi di Claude Code: ognuno ha solo quello che gli serve.
 

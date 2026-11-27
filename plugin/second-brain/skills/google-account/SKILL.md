@@ -1,11 +1,12 @@
 ---
 name: google-account
 description: >
-  Lavora con Gmail, Drive, Fogli, Documenti e Calendar su più account Google (per esempio il
-  proprio e quello di un'agenzia o di un cliente) usando il programma gog da terminale,
-  scegliendo sempre l'account scritto nella nota del cliente. Usala quando un lavoro tocca
-  file o email di Google, quando la persona dice «sull'altro account», «con l'account di X»,
-  «nel foglio del cliente», e quando bisogna installare o collegare gog.
+  Works with Gmail, Drive, Sheets, Docs and Calendar across several Google accounts using the gog
+  command-line program, always picking the account written in the client's note. Opened with
+  /second-brain:google-account. — Lavora con Gmail, Drive, Fogli, Documenti e Calendar su più
+  account Google con il programma gog da terminale, scegliendo sempre l'account scritto nella nota
+  del cliente. Si apre con /second-brain:google-account.
+disable-model-invocation: true
 ---
 
 # Google con più account (gog)

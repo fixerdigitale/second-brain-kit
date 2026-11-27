@@ -1,7 +1,7 @@
 {
   "name": "second-brain",
   "version": "2.0.0",
-  "description": "Second brain per Claude Code, per qualsiasi livello: /second-brain:onboarding porta a un primo risultato vero in circa 15 minuti, poi una mappa di quello che hai e al massimo 3 passi da un catalogo di opzioni, con la rimisura dopo 14 giorni. Memoria in file tuoi, correzioni che restano, sola lettura finché non dici sì. Italiano e inglese.",
+  "description": "A second brain for Claude Code, for any level: /second-brain:onboarding leads to a first real result in 15-25 minutes, then a map of what you have and at most 3 steps from a catalog of options, with a re-measure after 14 days. Memory in your own files, corrections that stick, the first look read-only and nothing written without your yes. English and Italian. — Second brain per Claude Code, per qualsiasi livello: /second-brain:onboarding porta a un primo risultato vero in 15-25 minuti, poi una mappa di quello che hai e al massimo 3 passi da un catalogo di opzioni, con la rimisura dopo 14 giorni. Memoria in file tuoi, correzioni che restano, primo sguardo in sola lettura e niente scritto senza il tuo sì. Italiano e inglese.",
   "author": {
     "name": "Daniel"
   },

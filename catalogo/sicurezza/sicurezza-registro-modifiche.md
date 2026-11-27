@@ -10,7 +10,7 @@ stato: lo uso
 ---
 # Registro delle modifiche sui sistemi dove lavorano più persone
 
-**Il problema.** Su server e sistemi dei clienti lavoriamo in più persone, ognuna con il suo Claude. Uno cambiava una configurazione, l'altro non lo sapeva e ci passava sopra, oppure perdeva un'ora a capire perché qualcosa si comportava in modo diverso.
+**Il problema.** Su alcuni sistemi lavoriamo in più persone, ognuna con il suo Claude. Uno cambiava una configurazione, l'altro non lo sapeva e ci passava sopra, oppure perdeva un'ora a capire perché qualcosa si comportava in modo diverso.
 
 **Come l'ho risolto.** Sul sistema stesso c'è un file REGISTRO-MODIFICHE.md con le voci più recenti in alto. Dopo ogni modifica si scrive una voce: data UTC, chi, cosa, perché, come tornare indietro, cosa si è verificato. Mai segreti: si scrive dove sta una cosa, non cosa contiene. Prima di toccare un servizio, Claude legge le ultime voci. In più lascio un commento sulla task del lavoro.
 

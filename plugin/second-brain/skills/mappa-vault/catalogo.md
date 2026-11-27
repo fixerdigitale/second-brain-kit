@@ -95,7 +95,7 @@ Dove gira: **PC** = sono file, funziona anche a PC spento; **PC acceso** = gira 
 - `hook-guardia-email` (PC, base, T0): Guardia che non fa uscire la mia email verso siti terzi
 - `sicurezza-aggiornamenti-mensili` (PC acceso, base, T0): Aggiornamenti mai automatici: un controllo al mese, poi decido io
 - `sicurezza-backup-notturno` (PC acceso, medio, T1): Backup notturno con la regola 3-2-1: tre copie, due posti, una fuori casa
-- `sicurezza-chiave-finita-online` (PC, base, T0): Una chiave è finita in una copia online: cosa ho fatto — senza pacchetto (nessuno: solo idea)
+- `sicurezza-chiave-finita-online` (PC, base, T0): Se una chiave finisce in una copia online: cosa farei — senza pacchetto (nessuno: solo idea)
 - `sicurezza-classificatore-permessi` (PC, base, T0): Quando Claude viene bloccato, si ferma e chiede
 - `sicurezza-controlli-salute` (PC acceso, medio, T1): Controlli di salute che avvisano solo quando lo stato cambia
 - `sicurezza-copia-settimanale` (PC, base, T0): Una copia a settimana fuori dal computer, senza programmi — senza pacchetto (nessuno: solo idea)

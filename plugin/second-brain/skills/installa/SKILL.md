@@ -1,11 +1,15 @@
 ---
 name: installa
 description: >
-  Esegue le missioni del second brain, una alla volta: i passi scelti nel PIANO dell'onboarding
-  (schede del catalogo con il loro pacchetto) e le missioni di base del kit (cassetti della memoria
-  e CLAUDE.md, profilo, cartelle chiuse a chiave, git locale). Ogni missione è idempotente: se la
-  cosa c'è già, la salta. Usala dalla skill onboarding alla fase 6, quando la persona scrive
-  /second-brain:installa, o quando chiede «installa la scheda <slug>», «facciamo il passo 1 del piano».
+  Runs the second brain's missions one at a time: the steps chosen in the onboarding PLAN (catalog
+  cards with their package) and the kit's base missions (memory drawers and CLAUDE.md, profile,
+  locked folders, local git). Every mission is idempotent: if the thing is already there, it skips
+  it. Opened by the onboarding (phase 6) or with /second-brain:installa. — Esegue le missioni del
+  second brain, una alla volta: i passi scelti nel PIANO dell'onboarding (schede del catalogo con il
+  loro pacchetto) e le missioni di base del kit (cassetti della memoria e CLAUDE.md, profilo,
+  cartelle chiuse a chiave, git locale). Ogni missione è idempotente: se la cosa c'è già, la salta.
+  La apre l'onboarding (fase 6) o /second-brain:installa.
+disable-model-invocation: true
 argument-hint: "[id della missione o slug della scheda]"
 ---
 

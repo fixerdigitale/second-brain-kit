@@ -1,11 +1,14 @@
 ---
 name: piano-upgrade
 description: >
-  Fase 5 dell'onboarding del second brain: dal catalogo «tutto quello che uso io, come opzione»
-  sceglie al massimo 3 passi per la persona, in ordine fisso (non perdere, non rispiegare, non
-  rifare, delegare), e scrive second-brain/PIANO-UPGRADE.md e .html con la tabella oggi / fra 14
-  giorni. Usala dentro l'onboarding dopo la MAPPA, alla rimisura, o quando la persona chiede «cosa
-  potrei aggiungere?», «cosa mi consigli dal catalogo?», «what should I add next?».
+  Onboarding phase 5: from the catalog it picks at most 3 steps, in a fixed order (don't lose, don't
+  re-explain, don't redo, delegate), and writes second-brain/PIANO-UPGRADE.md and .html with a today
+  / in 14 days table. Opened by the onboarding after the MAP and at the re-measure, or with /second-
+  brain:piano-upgrade. — Fase 5 dell'onboarding: dal catalogo sceglie al massimo 3 passi, in ordine
+  fisso (non perdere, non rispiegare, non rifare, delegare), e scrive second-brain/PIANO-UPGRADE.md
+  e .html con la tabella oggi / fra 14 giorni. La apre l'onboarding dopo la MAPPA e alla rimisura,
+  oppure /second-brain:piano-upgrade.
+disable-model-invocation: true
 ---
 
 # Piano di upgrade
@@ -17,9 +20,12 @@ Scopo: dal catalogo, solo i passi che servono a questa persona adesso. Al massim
 
 1. **Indice** (sempre presente): `${CLAUDE_PLUGIN_ROOT}/catalogo-indice.json`. Per ogni scheda:
    `slug`, `titolo`, `area_onboarding`, `gruppo_piano`, `dove_gira`, `livello`, `tono_minimo`,
-   `costo`, `stato_da_me`, `pacchetto`, `scheda` (percorso nella repo), `scheda_en` e `titolo_en`
-   (versione inglese), `problema`, `quando_non_serve`, `segni_che_ce_l_hai`. Con lingua `en` usa
-   `titolo_en` e apri `scheda_en` (cartella `catalog/`); se manca, la scheda italiana.
+   `costo`, `stato_da_me`, `stato_tipo` (`uso` = la uso così, `pc` = versione per PC di una cosa
+   che uso in un'altra forma, `proposta` = non la uso così), `pacchetto`, `scheda` (percorso nella
+   repo), `scheda_en` e `titolo_en` (versione inglese), `problema`, `quando_non_serve`,
+   `segni_che_ce_l_hai`. Con lingua `en` usa `titolo_en` e apri `scheda_en` (cartella `catalog/`);
+   se manca, la scheda italiana. Quando proponi una scheda `proposta`, dillo: «questa non la uso
+   così, è un'idea» (EN: «I don't use this one this way, it's an idea»).
 2. **Schede intere e pacchetti** stanno nella repo del kit, nelle cartelle `catalogo/` e
    `pacchetti/`. Per trovare la repo prova in quest'ordine, con Glob:
    - `${CLAUDE_PLUGIN_ROOT}/../../catalogo/` (plugin usato da una copia della repo);
@@ -44,8 +50,19 @@ Per ogni scheda decidi una sola etichetta:
 |---|---|
 | **ce l'hai** | `studia` ha trovato i `segni_che_ce_l_hai`, completi |
 | **ce l'hai, migliorabile** | segni trovati in parte, o la cosa c'è ma è ferma da più di 90 giorni |
-| **adatta** | non ce l'ha, il tono basta (`tono_minimo` ≤ tono), l'area non è «non serve adesso», e la sua situazione non è quella di `quando_non_serve` |
+| **non so se ce l'hai** | `segni_che_ce_l_hai` è vuoto: dai file non si può sapere. Non darla per mancante: vedi sotto |
+| **adatta** | non ce l'ha (segni cercati e non trovati), il tono basta (`tono_minimo` ≤ tono), l'area non è «non serve adesso», e la sua situazione non è quella di `quando_non_serve` |
 | **non adesso** | tutto il resto: tono troppo alto, `dove_gira: server` senza un computer sempre acceso, `PC acceso` se la persona spegne il PC (`pc_acceso_di_notte: false` nello stato; se non lo sai, chiedilo prima di scegliere), area che non le serve, già saltata da lei |
+
+**Segni vuoti.** Molte schede non hanno ancora `segni_che_ce_l_hai`. Per quelle «non trovato» non
+vuol dire «non ce l'hai». Prima di sceglierla come passo, oppure prima di elencarla fra le `adatta`,
+fai una domanda sola, con il problema della scheda e non con il suo nome: «Ti capita già di <cosa fa
+la scheda, dal campo `problema`>? Se sì, come lo fai oggi?» (EN: «Do you already <what the card
+does>? If so, how do you do it today?»). Con la risposta l'etichetta diventa **ce l'hai**, **ce
+l'hai, migliorabile** o **adatta**. Al massimo 3 domande così per piano: se ne servirebbero di più,
+fai solo quelle delle schede che stanno per entrare nei 3 passi e lascia le altre come «non so se
+ce l'hai» nell'elenco finale. Se la persona non vuole rispondere, la scheda resta «non so se ce
+l'hai» e non entra nei passi.
 
 `dove_gira: server` si propone solo se la persona ha o vuole un computer sempre acceso; in quel
 caso dillo chiaro: «ha senso solo con un computer sempre acceso; qui c'è solo l'idea, non un
@@ -113,7 +130,9 @@ note). Niente migrazioni.
 3. «Tabella oggi / fra 14 giorni»: le misure della mappa; nella colonna «fra 14 giorni» il valore
    atteso se i 3 passi si fanno, scritto come atteso.
 4. «Il resto del catalogo»: le schede `adatta` non scelte, una riga ciascuna (titolo e slug), poi le
-   `ce l'hai` e `ce l'hai, migliorabile`. Le `non adesso` non si elencano, si dice quante sono.
+   `ce l'hai` e `ce l'hai, migliorabile`, poi le `non so se ce l'hai` rimaste senza risposta, con
+   scritto «dai file non si capisce: se ti interessa, dimmelo e controlliamo». Le `non adesso` non
+   si elencano, si dice quante sono.
 5. Fai rileggere il testo al sotto-agente `revisore`. Correggi. Poi scrivi
    `second-brain/PIANO-UPGRADE.md` e `python3 "${CLAUDE_PLUGIN_ROOT}/scripts/pagina.py"
    second-brain/PIANO-UPGRADE.md --lingua <it|en>`.
@@ -134,4 +153,5 @@ About N minutes.» Se la persona dice di no, va bene: il piano resta lì.
 - Più di 3 passi, più di 2 dallo stesso gruppo (fuori dall'emergenza), o passi fuori dall'indice.
 - Saltare l'ordine (per esempio un agente prima del backup quando il backup manca).
 - Proporre una scheda che la persona ha già, solo con un altro nome: va fra «ce l'hai».
+- Dare per mancante una scheda con `segni_che_ce_l_hai` vuoto senza aver chiesto.
 - Scrivere «devi»: è un'opzione, la decide lei.

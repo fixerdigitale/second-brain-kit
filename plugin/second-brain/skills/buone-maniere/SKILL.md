@@ -1,7 +1,13 @@
 ---
 name: buone-maniere
 description: >
-  Regole di sicurezza per chi inizia con Claude e Claude Code. Prima di modificare, cancellare, installare, pubblicare o usare un connettore: una copia o un modo per tornare indietro.
+  Safety rules for anyone starting with Claude and Claude Code: before changing, deleting,
+  installing, publishing or using a connector, a copy or a way back. Opened by the onboarding or
+  with /second-brain:buone-maniere; the CLAUDE.md block can make its rules permanent. — Regole di
+  sicurezza per chi inizia con Claude e Claude Code: prima di modificare, cancellare, installare,
+  pubblicare o usare un connettore, una copia o un modo per tornare indietro. La apre l'onboarding o
+  /second-brain:buone-maniere; il blocco del CLAUDE.md può rendere fisse le sue regole.
+disable-model-invocation: true
 ---
 
 # Buone maniere

@@ -11,7 +11,7 @@ status: "I use it"
 
 # A change log on systems where several people work
 
-**The problem.** On clients' servers and systems several of us work, each with our own Claude. One person changed a configuration, the other didn't know and overwrote it, or lost an hour figuring out why something behaved differently.
+**The problem.** On some systems several of us work, each with our own Claude. One person changed a configuration, the other didn't know and overwrote it, or lost an hour figuring out why something behaved differently.
 
 **How I solved it.** On the system itself there's a REGISTRO-MODIFICHE.md file (change log) with the most recent entries at the top. After every change an entry is written: UTC date, who, what, why, how to roll back, what was verified. Never secrets: you write where something is, not what it contains. Before touching a service, Claude reads the latest entries. On top of that I leave a comment on the job's task.
 

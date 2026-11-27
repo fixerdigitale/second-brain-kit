@@ -24,16 +24,19 @@ alla fase 0 il tono non si conosce ancora. Chi è esperto lo capisce subito e pu
 > faccio una copia con la data. Non pubblico, non condivido, non installo niente preso da fuori senza
 > un controllo e un tuo sì. Non mando niente a nessuno.
 >
+> **Dove passa quello che leggo.** Quello che leggo, compresi i nomi delle cartelle, passa da Claude
+> come ogni conversazione: vale la privacy del tuo account Anthropic. Il kit non aggiunge nessun
+> altro invio.
+>
 > **Dove scrivo.** Solo nella cartella `second-brain/` dentro la tua cartella di lavoro: lo stato
 > del giro, la mappa, il piano e i risultati. Tutto il resto con il tuo sì. Se la cartella di lavoro
 > è sincronizzata (OneDrive, iCloud, Dropbox, Google Drive) o ha una copia online, quello che scrivo
 > lì finisce anche online: te lo dico prima e scegliamo insieme.
 >
 > **Cosa parte da solo.** Un controllo all'apertura di Claude: fra 14 giorni ti propone, una volta
-> sola, di rifare le misure; prima non fa niente. In più due procedure del kit si attivano quando
-> servono: le «buone maniere» (prima di cambiare un file, una copia) e «salva in memoria» (quando mi
-> dici «ricordati che…»), che prima di scrivere ti mostra cosa e dove e aspetta il sì. Le altre le
-> accendi tu, se vuoi.
+> sola, di rifare le misure; prima non fa niente. Le altre procedure del kit (per esempio «salva in
+> memoria», che prima di scrivere ti mostra cosa e dove e aspetta il sì) non si accendono da sole:
+> le apro io durante il giro, quando servono, oppure le chiami tu con `/second-brain:<nome>`.
 >
 > Su Mac il sistema può chiederti con una finestra se Claude può accedere a Scrivania, Documenti o
 > Download. Se dici «Non consentire», quelle cartelle le vedo come chiuse, non come vuote.
@@ -60,16 +63,19 @@ alla fase 0 il tono non si conosce ancora. Chi è esperto lo capisce subito e pu
 > full, and I make a dated copy first. I don't publish, share or install anything from outside without
 > a check and your yes. I don't send anything to anyone.
 >
+> **Where what I read goes.** What I read, folder names included, goes through Claude like any
+> conversation: your Anthropic account's privacy applies. The kit adds no other sends.
+>
 > **Where I write.** Only in the `second-brain/` folder inside your work folder: the progress state,
 > the map, the plan and the results. Everything else with your yes. If the work folder is synced
 > (OneDrive, iCloud, Dropbox, Google Drive) or has an online copy, what I write there goes online too:
 > I'll tell you first and we choose together.
 >
 > **What runs on its own.** A check when Claude opens: in 14 days it offers, once, to redo the
-> measures; until then it does nothing. Also, two of the kit's procedures switch on when needed: "good
-> manners" (a copy before changing a file) and "save to memory" (when you say "remember that…"),
-> which shows you what and where before writing and waits for your yes. You switch on the others, if
-> you want.
+> measures; until then it does nothing. The kit's other procedures (for example "save to memory",
+> which shows you what and where before writing and waits for your yes) don't switch on by
+> themselves: I open them during the walk-through when they're needed, or you call them with
+> `/second-brain:<name>`.
 >
 > On a Mac the system may ask you in a window whether Claude can access Desktop, Documents or
 > Downloads. If you say "Don't Allow", I'll see those folders as closed, not as empty.

@@ -1,12 +1,12 @@
 ---
 name: definisci-pipeline
 description: >
-  Trasforma un lavoro che si ripete in una pipeline scritta (passi, chi li fa, strumenti,
-  account, dove serve l'ok) in pipeline/PIPELINE.md, e la tiene aggiornata con le correzioni
-  della persona. Usala quando un lavoro torna per la seconda volta, quando la persona dice
-  «lo faccio ogni settimana», «è sempre la stessa cosa», «mettiamolo in automatico», «fammi
-  la procedura», quando c'è un file lavori-ricorrenti.md da sistemare, e quando parte un
-  lavoro che ha già una pipeline.
+  Turns a recurring job into a written pipeline (steps, who does them, tools, accounts, where the ok
+  is needed) in pipeline/PIPELINE.md, and keeps it updated with your corrections. Opened by the
+  onboarding or with /second-brain:definisci-pipeline. — Trasforma un lavoro che si ripete in una
+  pipeline scritta (passi, chi li fa, strumenti, account, dove serve l'ok) in pipeline/PIPELINE.md,
+  e la tiene aggiornata con le correzioni. La apre l'onboarding o /second-brain:definisci-pipeline.
+disable-model-invocation: true
 ---
 
 # Definisci una pipeline

@@ -1,21 +1,23 @@
 # 04 · Le skill
 
-Una **skill** è un manuale di istruzioni che insegni a Claude una volta sola. È una cartella con dentro un file `SKILL.md` (quando usarla e i passi da fare) e, se servono, modelli ed esempi. Claude la apre **da solo** quando la richiesta c'entra.
+Una **skill** è un manuale di istruzioni che insegni a Claude una volta sola. È una cartella con dentro un file `SKILL.md` (quando usarla e i passi da fare) e, se servono, modelli ed esempi. Di solito Claude la apre **da solo** quando la richiesta c'entra; una skill può anche essere fatta per partire solo quando la chiami tu.
 
 Con una skill il lavoro esce sempre con la stessa struttura e con le tue regole, senza ripeterle a ogni chat.
 
 ## Le skill di questo pacchetto
 
-| Skill | Quando la usa Claude |
+Per non riempire ogni conversazione, Claude apre da solo solo `onboarding` e `aiuto`. Le altre le chiami tu con `/second-brain:<nome>`, oppure le apre l'onboarding quando servono. Le regole di sicurezza e di metodo valgono comunque sempre, perché stanno nel blocco del tuo `CLAUDE.md`.
+
+| Skill | Quando usarla |
 |---|---|
-| `buone-maniere` | prima di modificare, cancellare, installare, pubblicare, inviare o spendere |
+| `buone-maniere` | prima di modificare, cancellare, installare, pubblicare, inviare o spendere (le regole base sono già nel `CLAUDE.md`) |
 | `contro-parere` | quando la chiami tu (`/second-brain:contro-parere`); con il blocco del metodo nel `CLAUDE.md` le sue regole valgono sempre: controlla i fatti e ti dice quando non è d'accordo |
-| `salva-in-memoria` | quando dici «salva», racconti un fatto o lo correggi; prima di scrivere ti mostra cosa e dove |
+| `salva-in-memoria` | quando vuoi salvare un fatto o una correzione (`/second-brain:salva-in-memoria`); prima di scrivere ti mostra cosa e dove |
 | `definisci-pipeline` | quando un lavoro si ripete |
 | `smistamento` | quando la chiami tu (`/second-brain:smistamento`): domanda o lavoro, quale cliente, quanto è grande |
 | `soluzioni` | prima e dopo un problema tecnico |
 | `google-account` | quando un lavoro tocca file o email di Google |
-| `aiuto` | quando chiedi come funziona qualcosa |
+| `aiuto` | quando chiedi come funziona qualcosa (si apre da sola) |
 
 Le puoi anche chiamare a mano: `/second-brain:aiuto`, `/second-brain:definisci-pipeline`, e così via.
 

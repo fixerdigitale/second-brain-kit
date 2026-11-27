@@ -1,12 +1,14 @@
 ---
 name: smistamento
 description: >
-  Primo passo su ogni richiesta: capisce se è una domanda (rispondi e basta) o un lavoro,
-  per quale cliente, se ha già una pipeline, quanto è grande e con quale modello farlo.
-  Si accende solo a mano, con /second-brain:smistamento: da sola non parte, perché cambierebbe
-  ogni conversazione dal giorno dell'installazione e potrebbe scontrarsi con uno smistamento che la
-  persona ha già. Le sue regole, se la persona le vuole sempre, vanno nel CLAUDE.md (missione
-  cassetti-memoria).
+  First step on a request: works out whether it's a question (just answer) or a job, for which
+  client, whether it already has a pipeline, how big it is and which model to use. Switched on only
+  by hand with /second-brain:smistamento, so it doesn't change every conversation or clash with a
+  routing you already have; its rules can go in the CLAUDE.md (cassetti-memoria mission). — Primo
+  passo su una richiesta: capisce se è una domanda (rispondi e basta) o un lavoro, per quale
+  cliente, se ha già una pipeline, quanto è grande e con quale modello farlo. Si accende solo a mano
+  con /second-brain:smistamento, per non cambiare ogni conversazione e non scontrarsi con uno
+  smistamento che c'è già; le sue regole possono andare nel CLAUDE.md (missione cassetti-memoria).
 disable-model-invocation: true
 ---
 

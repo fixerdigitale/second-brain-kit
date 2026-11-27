@@ -5,7 +5,7 @@ area: memoria
 dove_gira: server
 livello: avanzato
 costo: "0 € in più con l'abbonamento Claude, ma richiede un server con una piattaforma di agenti (io uso OpenClaw)."
-pacchetto: nessuno: solo idea
+pacchetto: "nessuno: solo idea"
 stato: lo uso
 ---
 

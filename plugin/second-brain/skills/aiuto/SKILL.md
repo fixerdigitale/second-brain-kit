@@ -1,13 +1,15 @@
 ---
 name: aiuto
 description: >
-  Risponde alle domande sul metodo Second Brain e su come usare Claude Code, leggendo le guide
-  del pacchetto. Usala quando la persona scrive /second-brain:aiuto, quando chiede «come
-  funziona…», «cos'è…», «come si fa…» su memoria, vault, skill, pipeline, correzioni,
-  modelli, consumi, limiti d'uso, contesto, permessi, come tornare indietro, Google con più
-  account, aggiornamenti del pacchetto, cosa si può aggiungere dal catalogo (backup, ricerca,
-  agenti, automazioni, call trascritte, approvazioni e altro), e i comandi
-  dell'onboarding («più piano», «più veloce», «salta»).
+  Answers questions about the Second Brain kit and about using Claude Code, reading the kit's
+  guides: memory, vault, skills, pipelines, corrections, models, usage limits, context, permissions,
+  going back, several Google accounts, updates, what to add from the catalog, and the onboarding
+  commands. Use it on /second-brain:aiuto or "how does … work" about these topics. — Risponde alle
+  domande sul kit Second Brain e su come usare Claude Code, leggendo le guide del kit: memoria,
+  vault, skill, pipeline, correzioni, modelli, limiti d'uso, contesto, permessi, tornare indietro,
+  più account Google, aggiornamenti, cosa aggiungere dal catalogo e i comandi dell'onboarding («più
+  piano», «più veloce», «salta»). Usala con /second-brain:aiuto o con «come funziona…» su questi
+  temi.
 argument-hint: "[argomento: memoria, skill, modelli, consumi, google, tornare indietro, aggiornare…]"
 ---
 

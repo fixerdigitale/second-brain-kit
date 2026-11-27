@@ -27,7 +27,9 @@ anche qui. Non usare `bypassPermissions` per lavori su cartelle con dati veri.
 dopo un minuto circa deve arrivare la notifica e comparire il file del risultato.
 
 **Limiti.** Gira solo a PC acceso: se il PC va in sospensione il lavoro si ferma. Consuma lo stesso
-piano di Claude che usi in chat.
+piano di Claude che usi in chat, se `claude` usa l'abbonamento: prima del primo lavoro controlla con
+`/status` in Claude Code. Se nell'ambiente c'è `ANTHROPIC_API_KEY`, `claude -p` la usa e ogni
+lavoro lo paghi a consumo.
 
 **Come si toglie.** Cancella `lavora.py` e la cartella dei risultati.
 
@@ -35,4 +37,4 @@ piano di Claude che usi in chat.
 
 `lavora.py` launches a long job (`claude -p`) in the background with a full brief, writes the result to a markdown file and sends a desktop notification when it ends (Windows, Mac, Linux). You keep working in chat meanwhile.
 
-Install: copy `lavora.py` wherever you like (for example `<vault-folder>/strumenti/`), change `CARTELLA_PREDEFINITA` if you want results in the vault, and try it with a dummy job. In the background commands can't be approved one by one, so those that need permission are denied.
+Install: copy `lavora.py` wherever you like (for example `<vault-folder>/strumenti/`), change `CARTELLA_PREDEFINITA` if you want results in the vault, and try it with a dummy job. In the background commands can't be approved one by one, so those that need permission are denied. Before the first job, check with `/status` in Claude Code that it uses your subscription: with `ANTHROPIC_API_KEY` in the environment, `claude -p` uses it and every job is billed per token.

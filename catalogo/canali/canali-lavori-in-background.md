@@ -14,7 +14,7 @@ stato: "versione per PC del mio"
 
 **Come l'ho risolto.** Quando una richiesta dura più di un paio di minuti, il mio assistente non mi tiene appeso: lancia una sessione nuova di Claude Code in background con un brief completo (obiettivo, file, cosa consegnare), mi dice subito che è partita e, a fine lavoro, mi arriva «✅ titolo: …» o «❌ …». Massimo 3 lavori insieme. Nel pacchetto c'è la versione per PC: uno script che lancia `claude -p` in background, scrive il risultato in un file markdown e manda una notifica sul desktop (Windows, Mac, Linux).
 
-**Differenza con il lavoro della notte.** Questo lo lanci tu, adesso, di giorno, un lavoro alla volta, mentre continui a lavorare in chat; finisce in minuti e ne guardi subito il risultato. La coda della notte ([scheda](canali-lavoro-notte.md)) è una lista preparata la sera, gira quando non ci sei, controlla il consumo del piano prima di ogni lavoro e lascia tutto «da rivedere» al mattino.
+**Differenza con il lavoro della notte.** Questo lo lanci tu, adesso, di giorno, un lavoro alla volta, mentre continui a lavorare in chat; finisce in minuti e ne guardi subito il risultato. La coda della notte ([scheda](canali-lavoro-notte.md)) è una lista preparata la sera, gira quando non ci sei (da me, sul server, controlla il consumo del piano prima di ogni lavoro; lo script per PC si ferma a un'ora fissa) e lascia tutto «da rivedere» al mattino.
 
 **Perché così.** Separare il «chiedere» dall'«aspettare» mi lascia continuare a pensare. Il brief scritto per una sessione che parte da zero mi obbliga anche a chiarire cosa voglio, e il file del risultato resta come traccia.
 

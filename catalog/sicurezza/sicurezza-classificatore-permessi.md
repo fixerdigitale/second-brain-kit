@@ -11,7 +11,7 @@ status: "I use it"
 
 # When Claude gets blocked, it stops and asks
 
-**The problem.** In auto mode Claude Code has a check that sometimes denies a risky action, for example a production release, a permanent timer or a write to a client's server, even when I've already said yes in chat. The temptation, for Claude, is to find another route to do the same thing.
+**The problem.** In auto mode Claude Code has a check that sometimes denies a risky action, for example a production release, a permanent timer or a write to another server, even when I've already said yes in chat. The temptation, for Claude, is to find another route to do the same thing.
 
 **How I solved it.** I have a fixed rule. If an action is denied, Claude stops and tells me what it wanted to do and why. If I give a written ok naming the precise action, not a generic "yes", it retries the identical command once. If it's denied again, it proposes a permission rule or gives me the command to run myself. No workarounds: another tool, a split command, a renamed file. On top of that it keeps actions that change something in a separate command from reads, so if it's denied it's clear why.
 

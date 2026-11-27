@@ -1,12 +1,13 @@
 ---
 name: soluzioni
-description: >-
-  Archivio delle soluzioni: cosa si è rotto, perché e come si è aggiustato, in soluzioni/.
-  Cerca qui PRIMA di diagnosticare un problema tecnico (foglio che non si aggiorna,
-  connettore che non risponde, script che fallisce, numeri che non tornano, errore strano),
-  e scrivi una scheda DOPO averne risolto uno non banale. Usala quando un problema sembra
-  già visto, quando la persona chiede «com'era che si risolveva», e ogni volta che una
-  diagnosi è costata più di mezz'ora.
+description: >
+  Solutions archive in soluzioni/: what broke, why and how it was fixed. Search it before diagnosing
+  a technical problem, write a card after solving a non-trivial one. Opened with /second-
+  brain:soluzioni; the CLAUDE.md block can make the habit permanent. — Archivio delle soluzioni in
+  soluzioni/: cosa si è rotto, perché e come si è aggiustato. Si cerca prima di diagnosticare un
+  problema tecnico, si scrive una scheda dopo averne risolto uno non banale. Si apre con /second-
+  brain:soluzioni; il blocco del CLAUDE.md può rendere fissa l'abitudine.
+disable-model-invocation: true
 ---
 
 # Archivio delle soluzioni
