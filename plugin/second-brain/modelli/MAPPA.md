@@ -27,7 +27,7 @@
 | Sicurezza e ripristino | | |
 
 ## Dove si inceppa (in ordine di costo di un errore, al massimo 3)
-1. **Non hai** <X>. **Significa che** <conseguenza con un numero>. **Potresti** <azione> **perché** <beneficio misurabile>. (scheda: [<titolo breve>](<repo>/catalogo/<famiglia>/<slug>.md))
+1. **Non hai** <X>. **Significa che** <conseguenza con un numero>. **Potresti** <azione> **perché** <beneficio misurabile>. (scheda: [<titolo breve>](https://github.com/fixerdigitale/second-brain-kit/blob/main/catalogo/<famiglia>/<slug>.md))
 2. …
 3. …
 

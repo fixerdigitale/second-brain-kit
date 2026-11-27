@@ -27,9 +27,12 @@ FINTO_PASSWORD = "Fint0" + "Segreto" + "42"
 
 
 def env_pulito(home=None, **extra):
-    """A copy of the environment without keys or cloud variables, with a fake HOME if given."""
+    """A copy of the environment without keys, cloud variables or CLAUDE_CONFIG_DIR, with a fake HOME if given.
+
+    CLAUDE_CONFIG_DIR is dropped so that the runner's own Claude Code config never leaks
+    into a test; the tests that need it pass it again through **extra."""
     env = {k: v for k, v in os.environ.items()
-           if not k.startswith(("ANTHROPIC_", "OneDrive", "ONEDRIVE"))}
+           if not k.startswith(("ANTHROPIC_", "OneDrive", "ONEDRIVE")) and k != "CLAUDE_CONFIG_DIR"}
     env["PYTHONIOENCODING"] = "utf-8"
     env["PYTHONUTF8"] = "1"
     if home is not None:

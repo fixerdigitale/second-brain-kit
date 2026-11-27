@@ -28,7 +28,9 @@ persona.
 2. **Un sì per ogni file** che cambia o nasce fuori da `second-brain/`. Mostra percorso e contenuto
    (in T0 a parole, in T2-T3 il diff).
 3. **Copia datata** prima di cambiare un file esistente: `<nome>.bak-AAAAMMGG-second-brain`
-   (`-HHMM` se esiste già). Non cancellare: sposta in `_da-cancellare/`.
+   (`-HHMM` se esiste già). L'ordine è sempre: copia, scrittura, rilettura. Mai spostare via il file
+   per poi riscriverlo: se la scrittura fallisce, il file sparisce. Non cancellare: quello che va
+   tolto finisce in `_da-cancellare/`, solo dopo che il nuovo è scritto e riletto.
 4. **Hook, permessi, modalità automatica:** spiega l'effetto in una riga («da adesso, ogni volta che
    …, succede …») e come si toglie, poi il sì.
 5. **Presi da fuori** (skill, MCP, plugin di terzi): leggi tutti i file prima di installare; cerca
@@ -40,7 +42,15 @@ persona.
    fatta` (o `saltata` se la persona scrive `salta`). Su Windows `python` o `py -3` al posto di
    `python3`.
 7. **Chiudi in tre righe:** cosa è cambiato, dove, come si torna indietro (copia, riga da togliere,
-   `${CLAUDE_PLUGIN_ROOT}/guide/05-tornare-indietro.md`).
+   la guida [tornare indietro](https://github.com/fixerdigitale/second-brain-kit/blob/main/plugin/second-brain/guide/05-tornare-indietro.md)).
+   Niente percorsi della cartella del plugin: la persona non li apre.
+8. **Comando o scrittura negata.** Se Claude Code nega un comando o una scrittura, ti fermi e lo dici
+   in parole semplici: cosa volevi fare, che è stato bloccato, le strade possibili (rispondere sì alla
+   finestra del permesso quando ricompare, il comando `/permissions`, lasciar perdere). Non rifai la
+   stessa operazione con un altro strumento (python3, Write, Edit, un'altra shell) senza un sì
+   esplicito su quella strada precisa. In T0-T1 non chiedi di aprire a mano file nascosti o JSON.
+9. **Un comando per chiamata Bash**, con i percorsi interi fra virgolette: niente `;`, `&&`, `|`,
+   `echo "exit=$?"`, variabili o cicli.
 
 ## Missione «scheda del catalogo» (id = slug)
 

@@ -16,6 +16,13 @@ passa sempre --cartella con la cartella di lavoro confermata dalla persona):
   stato.py leggi                       stampa la riga di ripresa
   stato.py mostra                      stampa tutto il JSON
   stato.py imposta <chiave.sotto> <valore>   valore JSON (numero, true, [..]) o testo
+  stato.py imposta-molti <chiave.sotto>=<valore> [<chiave.sotto>=<valore> ...]
+                                       piu' chiavi in una sola chiamata, stessi controlli
+                                       di «imposta» su ogni valore (niente segreti, al
+                                       massimo 300 caratteri). Tutto o niente: se una
+                                       coppia e' rifiutata non si scrive nessuna chiave.
+                                       Un valore con spazi va fra virgolette:
+                                       "primo_risultato.descrizione=preventivo da una mail"
   stato.py aggiungi <chiave.sotto> <valore>  aggiunge a una lista
   stato.py ora <chiave.sotto>          scrive l'ora di adesso (ISO, ora locale)
   stato.py minuti <chiave-inizio> <chiave-fine>   minuti fra due ore salvate
@@ -23,6 +30,9 @@ passa sempre --cartella con la cartella di lavoro confermata dalla persona):
   stato.py missione <id> <fatta|saltata|in-corso>
       <id> puo' essere lo slug della scheda o il nome della missione: la riga
       «Adesso» li riconosce tutti e due (campo «missione» dentro piano.passi).
+
+  stato.py --help | -h                 stampa questo aiuto (anche dopo un comando) e non
+                                       legge ne' scrive niente.
 
 Codici di uscita: 0 fatto, 1 stato mancante, 2 errore d'uso.
 
@@ -42,6 +52,10 @@ VIETATE = ("Desktop", "Scrivania", "Downloads", "Download", "Documents", "Docume
 
 class ErroreUso(Exception):
     pass
+
+
+class ValoreLungo(Exception):
+    """Valore oltre i 300 caratteri: esce con 1, come prima."""
 
 
 MSG_KIT = {
@@ -134,8 +148,12 @@ def cartella_vietata(cartella, lingua="it"):
                 return ("%s intera non va bene come cartella di lavoro: usa una sua sottocartella dedicata "
                         "(per esempio %s)" % (n, os.path.join(cartella, "Lavoro")))
     # cartelle dei programmi e delle chiavi: mai, nemmeno una loro sottocartella
-    for n in (".claude", ".ssh", ".gnupg", ".aws", ".config", "AppData"):
-        x = os.path.normcase(os.path.realpath(os.path.join(home, n)))
+    programmi = [(n, os.path.join(home, n)) for n in (".claude", ".ssh", ".gnupg", ".aws", ".config", "AppData")]
+    config_dir = (os.environ.get("CLAUDE_CONFIG_DIR") or "").strip()
+    if config_dir:
+        programmi.append(("CLAUDE_CONFIG_DIR", os.path.expanduser(config_dir)))
+    for n, d in programmi:
+        x = os.path.normcase(os.path.realpath(d))
         if c == x or c.startswith(x.rstrip(os.sep) + os.sep):
             return "%s e' una cartella di programmi o di chiavi, non una cartella di lavoro" % n
     # intere, non le loro sottocartelle (iCloud Drive/Lavoro va bene)
@@ -187,7 +205,7 @@ def valore(testo):
     except ValueError:
         v = testo
     if len(json.dumps(v, ensure_ascii=False)) > 300:
-        raise SystemExit("Rifiuto: valore troppo lungo. Nello stato vanno solo nomi e numeri, non contenuti.")
+        raise ValoreLungo("Rifiuto: valore troppo lungo. Nello stato vanno solo nomi e numeri, non contenuti.")
     # una chiave o una password non entra mai nello stato (lo stato puo' stare in una
     # cartella sincronizzata e lo leggono le sessioni dopo)
     try:
@@ -271,6 +289,9 @@ def main(argv):
     except ErroreUso as e:
         print(str(e), file=sys.stderr)
         return 2
+    except ValoreLungo as e:
+        print(str(e), file=sys.stderr)
+        return 1
     except (KeyError, TypeError) as e:
         print("chiave mancante o vuota nello stato: %s" % e, file=sys.stderr)
         return 2
@@ -280,6 +301,11 @@ def main(argv):
 
 
 def _main(argv):
+    argv = list(argv)
+    # l'aiuto prima di tutto: non legge lo stato e non scrive niente
+    if any(a in ("-h", "--help") for a in argv):
+        print(__doc__)
+        return 0
     cartella = os.getcwd()
     if "--cartella" in argv:
         i = argv.index("--cartella")
@@ -345,6 +371,35 @@ def _main(argv):
                 raise ErroreUso("lingua: it oppure en")
         nodo[k] = v
         salva(p, dati)
+    elif cmd == "imposta-molti" and resto:
+        # prima si controllano tutte le coppie, poi si scrive una volta sola
+        coppie = []
+        for coppia in resto:
+            chiave, uguale, testo = coppia.partition("=")
+            if not uguale:
+                raise ErroreUso("imposta-molti vuole coppie chiave=valore: %r non ha «=»" % chiave[:40])
+            if not chiave.strip(". "):
+                raise ErroreUso("chiave vuota in una coppia di imposta-molti")
+            try:
+                v = valore(testo)
+            except ValoreLungo as e:
+                raise ValoreLungo("%s (chiave %s; nessuna chiave scritta)" % (e, chiave[:60]))
+            except ErroreUso as e:
+                raise ErroreUso("%s (chiave %s; nessuna chiave scritta)" % (e, chiave[:60]))
+            if chiave == "lingua":
+                v = str(v).lower()
+                if v not in LINGUE:
+                    raise ErroreUso("lingua: it oppure en (nessuna chiave scritta)")
+            coppie.append((chiave, v))
+        prova = json.loads(json.dumps(dati))
+        for chiave, v in coppie:
+            nodo, k = vai(prova, chiave)
+            nodo[k] = v
+        for chiave, v in coppie:
+            nodo, k = vai(dati, chiave)
+            nodo[k] = v
+        salva(p, dati)
+        print("impostate %d chiavi" % len(coppie))
     elif cmd == "aggiungi" and len(resto) == 2:
         nodo, k = vai(dati, resto[0])
         lista = nodo.get(k)

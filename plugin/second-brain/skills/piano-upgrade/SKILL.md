@@ -20,12 +20,17 @@ Scopo: dal catalogo, solo i passi che servono a questa persona adesso. Al massim
 
 1. **Indice** (sempre presente): `${CLAUDE_PLUGIN_ROOT}/catalogo-indice.json`. Per ogni scheda:
    `slug`, `titolo`, `area_onboarding`, `gruppo_piano`, `dove_gira`, `livello`, `tono_minimo`,
-   `costo`, `stato_da_me`, `stato_tipo` (`uso` = la uso così, `pc` = versione per PC di una cosa
-   che uso in un'altra forma, `proposta` = non la uso così), `pacchetto`, `scheda` (percorso nella
-   repo), `scheda_en` e `titolo_en` (versione inglese), `problema`, `quando_non_serve`,
-   `segni_che_ce_l_hai`. Con lingua `en` usa `titolo_en` e apri `scheda_en` (cartella `catalog/`);
-   se manca, la scheda italiana. Quando proponi una scheda `proposta`, dillo: «questa non la uso
-   così, è un'idea» (EN: «I don't use this one this way, it's an idea»).
+   `costo`, `stato_da_me`, `stato_tipo` (`uso` = chi ha scritto il kit la usa così, `pc` = versione
+   per PC di una cosa che l'autore usa in un'altra forma, `proposta` = l'autore non la usa così),
+   `pacchetto`, `scheda` (percorso nella repo), `scheda_en` e `titolo_en` (versione inglese),
+   `problema`, `quando_non_serve`, `segni_che_ce_l_hai`. Con lingua `en` usa `titolo_en` e apri
+   `scheda_en` (cartella `catalog/`); se manca, la scheda italiana. Quando proponi una scheda
+   `proposta`, dillo: «chi ha scritto il kit non la usa così: è un'idea» (EN: «the kit's author
+   doesn't use this one this way: it's an idea»).
+   **Le frasi delle schede e di `stato_da_me` sono in prima persona dell'autore** («la uso ogni
+   giorno», «non la uso più così, la facevo all'inizio»). Nel PIANO e in chat non le copi così: le
+   riformuli in terza persona («chi ha scritto il kit la usa ogni giorno», «chi ha scritto il kit non
+   la usa più così») oppure le togli. Tu non sei l'autore.
 2. **Schede intere e pacchetti** stanno nella repo del kit, nelle cartelle `catalogo/` e
    `pacchetti/`. Per trovare la repo prova in quest'ordine, con Glob:
    - `${CLAUDE_PLUGIN_ROOT}/../../catalogo/` (plugin usato da una copia della repo);
@@ -107,9 +112,12 @@ note). Niente migrazioni.
 - **La riga del perché**, prima degli altri campi: «**Non hai** <X>. **Significa che** <conseguenza,
   con un numero>. **Potresti** <azione> **perché** <beneficio misurabile>.» (EN: «**You don't have**
   … **It means** … **You could** … **because** …»). È la stessa forma della MAPPA.
-- **Link alla scheda:** `[<slug>](<repo>/catalogo/<famiglia>/<slug>.md)` con il percorso vero della
-  repo trovata (in inglese `catalog/`). In T0 nel testo va il titolo della scheda; lo slug solo nel
-  link fra parentesi.
+- **Link alla scheda:** il link GitHub, mai un percorso sul disco (la copia del plugin sta in una
+  cartella nascosta della cache che la persona non apre):
+  `[<titolo della scheda>](https://github.com/fixerdigitale/second-brain-kit/blob/main/catalogo/<area>/<slug>.md)`.
+  In inglese `catalog/` e `titolo_en`. Il pezzo dopo `blob/main/` è il campo `scheda` (o
+  `scheda_en`) dell'indice, così com'è.
+  In T0 nel testo va il titolo della scheda; lo slug solo fra parentesi.
 - **Tempo:** minuti per metterlo, dal campo `costo` della scheda o dal LEGGIMI del pacchetto. Se è
   una tua stima, scrivi «stima».
 - **Costo abbonamento:** `basso` se sono file, script o regole che non chiamano un modello da soli;
@@ -118,7 +126,8 @@ note). Niente migrazioni.
 - **Numero che sposta:** una delle misure della mappa, da oggi all'atteso, per esempio «giorni
   dall'ultimo backup verificato: da mai a 0».
 - **Come si annulla:** il «come si toglie» del pacchetto (file da cancellare, riga da togliere) e il
-  link a `${CLAUDE_PLUGIN_ROOT}/guide/05-tornare-indietro.md`.
+  link [tornare indietro](https://github.com/fixerdigitale/second-brain-kit/blob/main/plugin/second-brain/guide/05-tornare-indietro.md),
+  anche in inglese (la guida c'è solo in italiano: dillo). Niente percorsi della cartella del plugin.
 - **Perché ora:** una riga, con la prova («2 chiavi in chiaro in `appunti/api.md:3`»).
 
 ## 4. Scrivi il PIANO
@@ -133,23 +142,45 @@ note). Niente migrazioni.
    `ce l'hai` e `ce l'hai, migliorabile`, poi le `non so se ce l'hai` rimaste senza risposta, con
    scritto «dai file non si capisce: se ti interessa, dimmelo e controlliamo». Le `non adesso` non
    si elencano, si dice quante sono.
-5. Fai rileggere il testo al sotto-agente `revisore`. Correggi. Poi scrivi
+5. Fai rileggere il testo al sotto-agente `revisore`. Gli passi il testo, le cartelle autorizzate,
+   **l'elenco dei file esclusi** (quelli segnalati da `cerca-segreti` e quelli che la persona ha
+   escluso, con la frase della regola ferma 14 di `onboarding`), il tono, la lingua e l'indice. Leggi
+   la sua ultima riga «File della persona aperti» (regola ferma 15 di `onboarding`). Correggi. Poi scrivi
    `second-brain/PIANO-UPGRADE.md` e `python3 "${CLAUDE_PLUGIN_ROOT}/scripts/pagina.py"
    second-brain/PIANO-UPGRADE.md --lingua <it|en>`.
-6. Stato: `piano.data`, `piano.file`, `piano.rimisura_dal`, `piano.passi` (lista di
+6. Stato: `piano.data`, `piano.file`, `piano.rimisura_dal` in una chiamata `stato.py imposta-molti`;
+   `piano.passi` con `imposta` a parte (lista di
    `{"scheda": "<slug>", "missione": "<id della missione di installa, se diverso>", "titolo":
    "<breve>", "minuti": N}`). Il campo `missione` serve alla riga di ripresa: per esempio
    `sicurezza-permessi-deny-ask` si fa con la missione `regole-deny`.
 
 ## 5. In chat
 
-Mostra i 3 passi in breve, nel tono giusto (T0: a parole, una riga ciascuno, senza slug; T2-T3:
-tabella). Poi
+Mostra i 3 passi in breve, nel tono giusto (T0: a parole, una riga ciascuno, senza slug né percorsi;
+T2-T3: tabella). Riassumi in parole tue: niente note di lavoro, niente resoconto del `revisore` così
+com'è. Poi
 una domanda: «Partiamo dal primo? Ci vogliono circa N minuti.» / «Shall we start with the first?
 About N minutes.» Se la persona dice di no, va bene: il piano resta lì.
 
+## Regole fisse quando si applicano i passi
+
+Il piano porta alle missioni (fase 6, skill `installa`): valgono le regole ferme 12-18 di
+`onboarding`, in particolare:
+- se Claude Code nega un comando o una scrittura, ti fermi e lo dici (cosa volevi fare, che è stato
+  bloccato, le strade possibili); non rifai la stessa operazione con un altro strumento (python3,
+  Write, un'altra shell) senza un sì esplicito su quella strada;
+- mai spostare o cancellare un file prima di aver scritto e riletto quello nuovo: prima la copia,
+  poi la scrittura, poi la rilettura;
+- un comando per chiamata Bash, percorsi interi, niente `;`, `&&`, variabili o cicli;
+- in T0-T1 niente file nascosti o JSON da aprire a mano: se una scrittura in `.claude/settings.json`
+  viene negata, la strada è la finestra del permesso o `/permissions`.
+
+Quando un passo del piano tocca le impostazioni, scrivilo già nel PIANO: «Claude Code ti chiederà il
+permesso di cambiare il file delle impostazioni: puoi dire sì, oppure no se preferisci lasciarlo com'è.»
+
 ## Errori da evitare
 
+- Link alle schede con percorsi sul disco, o frasi in prima persona dell'autore copiate dalla scheda.
 - Più di 3 passi, più di 2 dallo stesso gruppo (fuori dall'emergenza), o passi fuori dall'indice.
 - Saltare l'ordine (per esempio un agente prima del backup quando il backup manca).
 - Proporre una scheda che la persona ha già, solo con un altro nome: va fra «ce l'hai».

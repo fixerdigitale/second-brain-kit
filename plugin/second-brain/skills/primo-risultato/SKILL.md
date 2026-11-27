@@ -25,7 +25,7 @@ provvisori, `consensi`. Lingua: quella della persona.
 | Chi | Primo risultato | Misura |
 |---|---|---|
 | **Qualunque tono, chiave già online** (lo sguardo veloce ha trovato una chiave in un file salvato in git con una copia online, o in una cartella sincronizzata) | Mettere al sicuro quella chiave, prima di tutto il resto (punto 4.1) | Chiavi in chiaro nei file online: prima e dopo |
-| **T0-T1** | Il lavoro detto alla fase 1, fatto insieme sul suo materiale | «Di solito: 25 min (stima tua). Oggi: 6 min (orario della sessione)» |
+| **T0-T1** | Il lavoro detto alla fase 1, fatto insieme sul suo materiale | «Di solito: 25 min (stima tua). Oggi: 12 min, dagli orari della sessione con le tue risposte, confermati da te» |
 | **T1 con correzioni** (correzioni ripetute nelle sessioni, o la persona dice «gliel'ho già detto») | Le ultime 3 volte che ha corretto Claude diventano 3 regole d'oro attive | Correzioni scritte: da 0 a 3 |
 | **T2-T3** | Un difetto trovato e chiuso (elenco sotto) | Difetti chiusi, con `file:riga` |
 | **T3 con vault** | Se il lavoro che pesa è un difetto del vault (per esempio «smista nella cartella sbagliata»), parti da quello come difetto da chiudere (punto 4); altrimenti pulizia mirata: doppioni, note orfane, conflitti | Note, quota dell'indice coperta, conflitti: prima e dopo |
@@ -123,20 +123,38 @@ modifica, la verifica (rilancia il controllo che l'aveva trovato). Misura: difet
 
 ## 6. Chiusura verso la fase 3
 
-1. Una riga con il risultato e la misura vera, per esempio: «Fatto: riassunto in
-   `second-brain/output/2026-11-27-call-fornitore.txt`. Di solito: 25 min (stima tua). Oggi: 7 min.»
+1. **Prima il tempo, poi il confronto.** Il tempo «con me» è quello fra `primo_risultato.inizio` e
+   `primo_risultato.fine`, e conta anche le risposte della persona. Non è il tempo che lei passa dopo
+   a rileggere e controllare, e non è il tempo che ci metterebbe da sola la prossima volta. Mostralo
+   con il come è misurato e chiedile se le torna (frase fissa in `onboarding/tono.md`, «Tempo del
+   primo risultato»). Se lo corregge, vale il suo numero. Se l'intervallo è stato molto corto (pochi
+   minuti) o il lavoro è passato da più messaggi lunghi, chiedile direttamente: «Quanti minuti ci
+   hai messo tu, fra leggere, rispondere e controllare?»
+   - Salva il numero confermato in `misure.minuti_primo_risultato` e
+     `primo_risultato.tempo_confermato true` (una chiamata `stato.py imposta-molti`).
+   - Senza conferma: niente confronto, né in chat né nella MAPPA. Scrivi solo «fatto», con il file.
+   - Mai un confronto tipo «60 minuti contro 2» senza dire accanto come sono misurati i due numeri
+     (il primo è la stima della persona, il secondo gli orari della sessione con le sue risposte,
+     confermati da lei).
+2. Una riga con il risultato e la misura vera, per esempio: «Fatto: riassunto in
+   `second-brain/output/2026-11-27-call-fornitore.txt`. Di solito: 25 min (stima tua). Oggi: 12 min,
+   dagli orari della sessione con le tue risposte, come mi hai confermato.»
    Se il guadagno è piccolo, lo dici così com'è.
-2. Salva `primo_risultato.descrizione` (massimo 10 parole, senza nomi di clienti) e
-   `primo_risultato.file`.
-3. Passa alla fase 3 con la domanda della fase 3 di `onboarding` (per T3 quella sul suo sistema).
+3. Salva `primo_risultato.descrizione` (massimo 10 parole, senza nomi di clienti) e
+   `primo_risultato.file` con una chiamata `stato.py imposta-molti` (ogni coppia con spazi fra
+   virgolette intera).
+4. Passa alla fase 3 con la domanda della fase 3 di `onboarding` (per T3 quella sul suo sistema).
 
-EN per il punto 1: «Done: summary in `second-brain/output/2026-11-27-supplier-call.txt`. Usually: 25
-min (your estimate). Today: 7 min.» Se il guadagno è piccolo: «The gain is small this time: 25 → 20
-min. That's the real number.»
+EN per il punto 2: «Done: summary in `second-brain/output/2026-11-27-supplier-call.txt`. Usually: 25
+min (your estimate). Today: 12 min, from the session times with your answers, as you confirmed.» Se il
+guadagno è piccolo: «The gain is small this time: 25 → 20 min. That's the real number.»
 
 ## Errori da evitare
 
 - Promettere un tempo. Il tempo con Claude si prende dagli orari salvati, non si «cronometra».
+- Mostrare un confronto prima/dopo senza dire come è misurato, o scriverlo nella MAPPA senza la
+  conferma della persona.
+- Dire «con me ci è voluto 1 minuto» contando solo il lavoro di Claude.
 - Fare il lavoro su un file originale. Si scrive in `second-brain/output/`.
 - Scegliere un lavoro lungo o incerto come primo risultato: meglio piccolo e sicuro.
 - Mostrare in chat il testo di una nota privata oltre il necessario.

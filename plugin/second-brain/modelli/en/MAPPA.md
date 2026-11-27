@@ -27,7 +27,7 @@
 | Security and restore | | |
 
 ## Where it gets stuck (ordered by the cost of a mistake, at most 3)
-1. **You don't have** <X>. **It means** <consequence with a number>. **You could** <action> **because** <measurable benefit>. (card: [<short title>](<repo>/catalog/<family>/<slug>.md))
+1. **You don't have** <X>. **It means** <consequence with a number>. **You could** <action> **because** <measurable benefit>. (card: [<short title>](https://github.com/fixerdigitale/second-brain-kit/blob/main/catalog/<family>/<slug>.md))
 2. …
 3. …
 

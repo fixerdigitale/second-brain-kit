@@ -58,7 +58,7 @@ Di solito si racconta solo quello che funziona. Io ho tenuto anche l'elenco di q
 
 **Quanto ci vuole.** Installazione: 2 minuti se hai già Claude Code. Primo risultato: 15-25 minuti. Giro completo: 30-45 minuti, anche in più volte.
 
-Provato con Claude Code 2.1.141 su Linux, il 27/11/2026. Mac e Windows non ancora provati: le issue sono benvenute.
+Provato con Claude Code 2.1.332 su Linux (la CI fa girare anche i test degli script su macOS e Windows), il 27/11/2026. Una sessione completa su Mac o Windows non è ancora provata: le issue sono benvenute.
 
 Le altre strade (zip, solo catalogo) e i dettagli per Mac, Windows e Linux sono in [docs/INSTALLA.md](docs/INSTALLA.md).
 

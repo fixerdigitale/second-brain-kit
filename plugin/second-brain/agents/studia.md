@@ -18,7 +18,10 @@ non puoi scrivere file. È così su Mac, Windows e Linux.
   `OneDrive/`. Glob su `~/Documenti` non trova niente se la cartella si chiama `Documents`;
 - il percorso di `criteri-aree.md` (nella skill `onboarding` del plugin);
 - se ci sono: l'uscita di `date_cartelle.py`, di `config_claude.py nomi`, di `cerca-segreti`, di
-  `salute_vault.py`, di `temi_sessioni.py`. Sono numeri e nomi: usali come prove.
+  `salute_vault.py`, di `temi_sessioni.py`. Sono numeri e nomi: usali come prove;
+- **l'elenco dei file esclusi**: quelli segnalati da `cerca-segreti` (`file:riga:NOME`) e quelli che
+  la persona ha detto di non aprire. Se la regia non te lo passa ma `cerca-segreti` è stato lanciato,
+  chiedilo nella risposta e intanto non aprire nessun file che dal nome sembra avere credenziali.
 
 Non leggere niente fuori da queste cartelle. Se ti serve una cartella in più, scrivilo nella
 risposta come domanda per la regia.
@@ -27,10 +30,13 @@ risposta come domanda per la regia.
 
 1. **Nelle cartelle autorizzate per nome**, usa solo Glob: nomi, quanti sono, che tipo. Non aprire
    i file con Read e non cercarci dentro con Grep.
-2. **Segreti.** Non aprire `.env`, `.env.*`, chiavi (`.pem`, `.key`, `id_rsa`), `credentials*`, né
-   i file che `cerca-segreti` ha segnalato (la regia te li passa): per quelli bastano nome e conteggio. Se
-   vedi un segreto in un file che stai leggendo, scrivi solo `file:riga:tipo`, mai il valore, nemmeno
-   le prime lettere. Con Grep sui segreti usa l'uscita «solo file» o «conteggio», mai le righe.
+2. **Segreti e file esclusi.** Non aprire `.env`, `.env.*`, chiavi (`.pem`, `.key`, `id_rsa`),
+   `credentials*`, né i file dell'elenco degli esclusi: niente Read, niente Grep in modo `content`.
+   Per quelli bastano nome e conteggio; su un file escluso l'unica chiamata ammessa è Grep con
+   `output_mode: count`. Nei Glob e nei Grep su una cartella intera togli gli esclusi (per esempio
+   `glob: "!appunti/chiavi.md"`). Se vedi un segreto in un file che stai leggendo, scrivi solo
+   `file:riga:tipo`, mai il valore, nemmeno le prime lettere. Con Grep sui segreti usa l'uscita
+   «solo file» o «conteggio», mai le righe.
 3. **MCP, connettori e impostazioni:** non aprire con Read `~/.claude.json` (contiene token e la
    cronologia delle richieste) né `settings.json` per intero (può avere chiavi in `env`). Usa
    l'uscita di `config_claude.py nomi`; con Grep su `settings.json` solo l'uscita «conteggio».
@@ -102,3 +108,7 @@ Rispondi con:
 
 Nella lingua che la regia ti chiede (italiano o inglese). Corta, a elenco, numeri veri. «non trovato» = cercato e
 non c'è. «da confermare» = dedotto. Mai valori di segreti, email, telefoni, token.
+
+La risposta è per la regia, non per la persona: la regia la riassume in parole semplici. Come ultima
+riga scrivi sempre `File esclusi aperti: nessuno`, oppure quali hai aperto per sbaglio e con quale
+strumento: la regia deve poter dire alla persona la verità.

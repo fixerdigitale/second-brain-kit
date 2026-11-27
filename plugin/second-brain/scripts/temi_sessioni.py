@@ -2,7 +2,8 @@
 """Conteggi e temi delle sessioni passate di Claude Code, senza il testo intero.
 
 Si usa SOLO con il consenso separato della persona (fase 0 dell'onboarding).
-Legge i file .jsonl in ~/.claude/projects/ (o nella cartella indicata), prende
+Legge i file .jsonl in ~/.claude/projects/ (o in <CLAUDE_CONFIG_DIR>/projects/ se
+quella variabile d'ambiente e' impostata, o nella cartella indicata), prende
 solo i messaggi scritti dalla persona e stampa:
   - sessioni, giorni attivi, richieste, richieste al giorno;
   - le parole piu' frequenti (i temi), senza frasi;
@@ -129,7 +130,9 @@ def parole_dei_temi(t):
 
 
 def main(argv):
-    cartella = os.path.join(os.path.expanduser("~"), ".claude", "projects")
+    base = (os.environ.get("CLAUDE_CONFIG_DIR") or "").strip()
+    base = os.path.abspath(os.path.expanduser(base)) if base else os.path.join(os.path.expanduser("~"), ".claude")
+    cartella = os.path.join(base, "projects")
     progetto, giorni, n_corr, come_json = None, 14, 0, False
     i = 0
     while i < len(argv):

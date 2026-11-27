@@ -19,10 +19,13 @@ alla fase 0 il tono non si conosce ancora. Chi è esperto lo capisce subito e pu
 > cartelle precise.
 >
 > **Cosa non faccio mai da solo.** Non apro browser, email o chat. Non copio password o chiavi: uno
-> script le cerca e mi dice solo in che file e riga sono, e quei file non li apro. Non scrivo, sposto
-> o cancello niente senza un tuo sì, per ogni voce o per un gruppo che ti mostro per intero, e prima
-> faccio una copia con la data. Non pubblico, non condivido, non installo niente preso da fuori senza
-> un controllo e un tuo sì. Non mando niente a nessuno.
+> script le cerca e mi dice solo in che file e riga sono, e quei file non li apro, né io né gli
+> assistenti che lancio per controllare. Non scrivo, sposto o cancello niente senza un tuo sì, per
+> ogni voce o per un gruppo che ti mostro per intero. Prima faccio una copia con la data, poi scrivo,
+> poi rileggo: non sposto né cancello un file prima che quello nuovo sia scritto e riletto. Se il
+> programma mi blocca un comando o una scrittura, mi fermo e te lo dico: non provo un'altra strada
+> senza un tuo sì su quella strada. Non pubblico, non condivido, non installo niente preso da fuori
+> senza un controllo e un tuo sì. Non mando niente a nessuno.
 >
 > **Dove passa quello che leggo.** Quello che leggo, compresi i nomi delle cartelle, passa da Claude
 > come ogni conversazione: vale la privacy del tuo account Anthropic. Il kit non aggiunge nessun
@@ -46,6 +49,9 @@ alla fase 0 il tono non si conosce ancora. Chi è esperto lo capisce subito e pu
 >
 > Va bene così? Se preferisci, dimmi quali cartelle guardare.
 
+Se la persona non ha ancora scritto niente, sotto il testo va la riga che offre l'altra lingua
+(`SKILL.md`, «Lingua»): «*(If you'd rather do this in English, just reply in English.)*»
+
 ### EN
 
 > I suggest a walk-through of 30-45 minutes, usually done in 2-3 sittings. First we do a real piece
@@ -58,10 +64,13 @@ alla fase 0 il tono non si conosce ancora. Chi è esperto lo capisce subito e pu
 > specific folders.
 >
 > **What I never do on my own.** I don't open browsers, email or chats. I don't copy passwords or
-> keys: a script looks for them and only tells me the file and line, and I don't open those files. I
-> don't write, move or delete anything without your yes, for each item or for a group I show you in
-> full, and I make a dated copy first. I don't publish, share or install anything from outside without
-> a check and your yes. I don't send anything to anyone.
+> keys: a script looks for them and only tells me the file and line, and those files stay closed,
+> for me and for the helpers I start to check things. I don't write, move or delete anything without
+> your yes, for each item or for a group I show you in full. First a dated copy, then the write, then
+> a re-read: I don't move or delete a file before the new one is written and checked. If the program
+> blocks a command or a write, I stop and tell you: I don't try another way without your yes on that
+> way. I don't publish, share or install anything from outside without a check and your yes. I don't
+> send anything to anyone.
 >
 > **Where what I read goes.** What I read, folder names included, goes through Claude like any
 > conversation: your Anthropic account's privacy applies. The kit adds no other sends.
@@ -85,13 +94,36 @@ alla fase 0 il tono non si conosce ancora. Chi è esperto lo capisce subito e pu
 >
 > Is this ok? If you prefer, tell me which folders to look at.
 
+If the person hasn't written anything yet, add the line offering the other language below the text:
+«*(Se preferisci l'italiano, rispondimi in italiano.)*»
+
+## Regole fisse che il patto promette (valgono in ogni fase)
+
+Sono le regole ferme 12-15 di `SKILL.md`, qui per esteso perché il patto le promette alla persona:
+
+1. **Comando o scrittura negata da Claude Code.** Ti fermi e lo dici in chat, in parole semplici:
+   cosa volevi fare, che è stato bloccato, le strade possibili. Non rifai la stessa operazione con
+   un altro strumento (python3, Write, Edit, un'altra shell, un comando diverso con lo stesso
+   effetto) senza un sì esplicito della persona su quella strada. EN: «The program blocked <what>. I
+   won't try another way on my own. Options: <a>, <b>. Which one, or neither?»
+2. **Prima copia, poi scrivi, poi rileggi.** Mai spostare o cancellare un file prima di aver scritto
+   e riletto quello nuovo.
+3. **File esclusi, anche per i sotto-agenti.** I file segnalati da `cerca-segreti` e quelli che la
+   persona esclude non si aprono: niente Read, niente Grep in modo `content`, da te o da qualsiasi
+   sotto-agente. Ogni sotto-agente riceve l'elenco.
+4. **Dire il vero su cosa è stato aperto.** Mai «non ho aperto quel file» se non è vero; se un
+   sotto-agente l'ha aperto, lo dici.
+
 ## Le tre domande dopo il sì (una alla volta)
 
 1. **Cartella di lavoro** (prima di scrivere qualsiasi cosa, anche lo stato). «La cartella dove
-   lavori di solito è `<percorso aperto adesso>`?» Non proporre mai come cartella di lavoro la
+   lavori di solito è `<nome della cartella aperta adesso>`?» Al tono T0 (che alla fase 0 vale per
+   tutti) usa il nome della cartella e dove sta in parole («la cartella `Notes`, dentro la tua
+   cartella personale»), non il percorso assoluto; il percorso intero solo se la persona lo chiede o
+   scrive da esperta. Non proporre mai come cartella di lavoro la
    cartella personale intera, la Scrivania, Download o Documenti interi (anche dentro OneDrive). Se la
    cartella aperta è una di queste, chiedi di aprirne una dedicata (per esempio
-   `Documents/Lavoro`). EN: «Is `<path>` the folder where you usually work?»
+   `Documents/Lavoro`). EN: «Is `<folder name>` the folder where you usually work?»
    **Cartella sincronizzata o con copia online.** Se il percorso contiene `OneDrive`, `iCloud`,
    `Mobile Documents`, `Dropbox`, `Google Drive` o `My Drive`, oppure la cartella è sotto git con un
    remoto (Glob `.git/config`, cerca `[remote`), dillo in due righe: «Questa cartella ha una copia
@@ -118,7 +150,8 @@ alla fase 0 il tono non si conosce ancora. Chi è esperto lo capisce subito e pu
 In T2-T3, o dopo `più veloce`, le domande 2 e 3 possono stare in un messaggio solo, con la scelta
 proposta accanto («2: sì, le chiudo · 3: no, se non mi dici altro»).
 
-Salva le risposte: `stato.py imposta consensi.<campo> <valore>`.
+Salva le risposte in una chiamata sola: `stato.py imposta-molti consensi.<campo>=<valore>
+consensi.<campo2>=<valore2>`.
 
 ## Regole deny proposte
 
@@ -170,5 +203,9 @@ gli stessi passi, ma non stampare il file in chat. L'elenco (è lo stesso dentro
   `~/AppData/...`; Linux: `~/.config/...`, `~/.mozilla/...`). Le righe comuni vanno su tutti.
 - Dopo la scrittura, rileggi il file e controlla che sia JSON valido.
 - Come si toglie: si cancellano solo le righe aggiunte, oppure si rimette la copia datata.
+- Se Claude Code nega la scrittura (o il comando dello script), regole fisse qui sopra: ti fermi e
+  lo dici. Le strade da proporre: rispondere sì alla finestra del permesso quando ricompare, oppure il
+  comando `/permissions` dentro Claude Code. Non chiedere alla persona di aprire il file a mano con un
+  editor, e non riprovare con un altro strumento senza il suo sì.
 - In T0 non mostrare il JSON: di' quali cartelle chiudi, a parole («le chiavi di accesso del
   computer, i file delle password dei programmi, i profili dei browser»).

@@ -19,6 +19,10 @@ Uso:
       controllo che il file sia JSON valido, scrittura, rilettura. Non stampa mai
       il contenuto del file. --prova mostra solo quante regole aggiungerebbe.
 
+Se la variabile d'ambiente CLAUDE_CONFIG_DIR e' impostata, Claude Code tiene le
+impostazioni li': lo script legge e scrive <CLAUDE_CONFIG_DIR>/settings.json e
+<CLAUDE_CONFIG_DIR>/.claude.json al posto di ~/.claude/settings.json e ~/.claude.json.
+
 Codici di uscita: 0 fatto, 1 file non valido o non trovato, 2 errore d'uso.
 Solo libreria standard di Python 3.
 """
@@ -59,6 +63,24 @@ LARGHE = ("Bash(*)", "Bash", "Bash(rm:*)", "Bash(rm *)", "Bash(git push:*)", "Ba
           "Bash(cat:*)", "Bash(cat *)", "Bash(curl:*)", "Bash(curl *)", "Write(**)", "Edit(**)", "Read(**)")
 
 
+def cartella_config():
+    """La cartella delle impostazioni di Claude Code: CLAUDE_CONFIG_DIR se c'e', altrimenti ~/.claude."""
+    d = (os.environ.get("CLAUDE_CONFIG_DIR") or "").strip()
+    return os.path.abspath(os.path.expanduser(d)) if d else os.path.expanduser(os.path.join("~", ".claude"))
+
+
+def file_settings():
+    return os.path.join(cartella_config(), "settings.json")
+
+
+def file_claude_json():
+    """~/.claude.json, oppure <CLAUDE_CONFIG_DIR>/.claude.json se la variabile c'e'."""
+    d = (os.environ.get("CLAUDE_CONFIG_DIR") or "").strip()
+    if d:
+        return os.path.join(os.path.abspath(os.path.expanduser(d)), ".claude.json")
+    return os.path.expanduser(os.path.join("~", ".claude.json"))
+
+
 def carica(p):
     with open(p, encoding="utf-8") as fh:
         return json.load(fh)
@@ -80,7 +102,7 @@ def server_mcp(blocco):
 
 
 def nomi(argv):
-    claude_json = os.path.expanduser("~/.claude.json")
+    claude_json = file_claude_json()
     settings, come_json = [], False
     i = 0
     while i < len(argv):
@@ -93,7 +115,7 @@ def nomi(argv):
             come_json = True
         i += 1
     if not settings:
-        settings = [os.path.expanduser("~/.claude/settings.json")]
+        settings = [file_settings()]
         cwd = os.getcwd()
         for f in ("settings.json", "settings.local.json"):
             settings.append(os.path.join(cwd, ".claude", f))
@@ -135,7 +157,7 @@ def nomi(argv):
     if come_json:
         print(json.dumps(uscita, ensure_ascii=False, indent=1))
         return 0
-    print("Connettori (MCP) in ~/.claude.json: %d" % len(uscita["connettori"]))
+    print("Connettori (MCP) in %s: %d" % (claude_json, len(uscita["connettori"])))
     for c in uscita["connettori"]:
         print("- %s: %s%s" % (c["nome"], c["tipo"],
                               ", con %d variabili/header o token nell'indirizzo (valori non mostrati)" % c["variabili_o_header"]
@@ -172,7 +194,7 @@ def sistema_attuale():
 
 
 def aggiungi_deny(argv):
-    p, sistema, prova = os.path.expanduser("~/.claude/settings.json"), "auto", False
+    p, sistema, prova = file_settings(), "auto", False
     i = 0
     while i < len(argv):
         a, v = argv[i], (argv[i + 1] if i + 1 < len(argv) else None)
@@ -234,6 +256,8 @@ def aggiungi_deny(argv):
     print("Aggiunte %d regole deny a %s (sistema: %s). Niente tolto." % (len(nuove), p, sistema))
     if copia:
         print("Copia prima della modifica: %s" % copia)
+    else:
+        print("Il file prima non c'era: creato nuovo, quindi nessuna copia da conservare.")
     print("Come si toglie: rimetti la copia, oppure cancella solo le righe aggiunte.")
     return 0
 
